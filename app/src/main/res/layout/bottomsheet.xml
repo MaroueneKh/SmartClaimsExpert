@@ -16,12 +16,13 @@
     <View
         android:id="@+id/divider"
         android:layout_width="2dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/greylight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView

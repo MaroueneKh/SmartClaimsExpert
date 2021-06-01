@@ -9,11 +9,13 @@ import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
-import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierAdapter
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.MarginItemDecoration
 import com.marouenekhadhraoui.smartclaimsexpert.utils.*
@@ -26,6 +28,7 @@ import javax.inject.Inject
 class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private val viewModel: DetailsBottomViewModel by viewModels()
+    private lateinit var navDirections: NavDirections
 
     @Inject
     lateinit var logger: Logger
@@ -140,6 +143,20 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
 
     }
+    fun setNavDirections(bundle: Bundle) {
+
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+
+            override fun getActionId(): Int {
+                return R.id.action_bottomSheet_to_detailsDossierFragment
+            }
+        }
+
+
+    }
 
     fun setAdapter() {
 
@@ -151,11 +168,10 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
                 logger.log(model.id.toString())
                 logger.log(model.identifiant)
 
-                val bundle = bundleOf("id" to model.id.toString(), "nom" to model.identifiant)
-                newInstance(bundle).apply {
-                    arguments = bundle
-                    show(it, tag)
-                }
+                val bundle = bundleOf("id" to model.idDossier.toString())
+                setNavDirections(bundle)
+                val navController = findNavController()
+               navController.navigate(navDirections)
             }
         }
         adapter.setItem(listDossiers)

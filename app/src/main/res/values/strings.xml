@@ -10,10 +10,21 @@
     <string name="Bienvenue">Bienvenue expert</string>
     <string name="Enligne">En ligne</string>
     <string name="DashboardExpert">Dashboard Expert</string>
+    <string name="Expertise">Expertise planifié avec succés</string>
+    <string name="Type">Type de l\'accident</string>
+    <string name="Collision">Collision</string>
+    <string name="Autre">Autre</string>
+    <string name="Lieu">Lieu de l\'accident</string>
+    <string name="Scan">Scan des documents</string>
+    <string name="Photos">Veuillez choisir un rendez vous pour la visio expertise</string>
     <string name="NbDossiers">Nombre de dossiers</string>
     <string name="Compagnie">Compagnie d\'assurance</string>
+    <string name="Planifier">Planifier la vidéo expertise</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Suivant">Suivant</string>
     <string name="Note">Note</string>
     <string name="Dossiers">Dossiers</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAPTNg63-NFTlo2x2oKJyky6o4_ZAacHYA</string>
     <string-array name="filtre_list">
         <item>En attente de confirmation</item>
         <item>En cours de traitement</item>
@@ -23,15 +34,6 @@
         <item>Nom</item>
         <item>Date</item>
     </string-array>
-
-
-
-
-
-
-
-
-
 
 
     <string name="hello_first_fragment">Hello first fragment</string>

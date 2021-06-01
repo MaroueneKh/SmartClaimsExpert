@@ -9,5 +9,40 @@
         android:id="@+id/homeFragment"
         android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_bottomSheet"
+            app:destination="@id/bottomSheet" />
+    </fragment>
+
+
+    <dialog
+        android:id="@+id/bottomSheet"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailsBottomSheetFragment"
+        tools:layout="@layout/bottomsheet" >
+        <action
+            android:id="@+id/action_bottomSheet_to_detailsDossierFragment"
+            app:destination="@id/detailsDossierFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/detailsDossierFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.DetailsDossierFragment"
+        android:label="fragment_details_dossier"
+        tools:layout="@layout/fragment_details_dossier" >
+        <action
+            android:id="@+id/action_detailsDossierFragment_to_planifierVisioDialogFragment"
+            app:destination="@id/planifierVisioDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/planifierVisioDialogFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.PlanifierVisioDialogFragment"
+        android:label="PlanifierVisioDialogFragment" >
+        <action
+            android:id="@+id/action_planifierVisioDialogFragment_to_planifierVisioDialogTimeFragment"
+            app:destination="@id/planifierVisioDialogTimeFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/planifierVisioDialogTimeFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.PlanifierVisioDialogTimeFragment"
+        android:label="PlanifierVisioDialogTimeFragment" />
 </navigation>

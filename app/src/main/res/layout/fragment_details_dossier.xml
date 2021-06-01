@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.DetailsDossierViewModel" />
+    </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/StepperLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/stepper1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/unchecked_stepper"
+                android:text="1"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/divider3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="8dp" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="33dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/grey"
+                app:layout_constraintStart_toEndOf="@+id/stepper1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/stepper2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/unchecked_stepper"
+                android:text="2"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/divider3"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="33dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/grey"
+                app:layout_constraintStart_toEndOf="@+id/stepper2"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/stepper3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/unchecked_stepper"
+                android:text="3"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/divider4"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="33dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/grey"
+                app:layout_constraintStart_toEndOf="@+id/stepper3"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="8dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/stepper4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/unchecked_stepper"
+                android:text="4"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/divider5"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="8dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/StepperLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_imd_car"
+                        app:layout_constraintEnd_toStartOf="@+id/textView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/AssureNomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center_horizontal"
+                        android:text="@string/Type"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/radiogroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                        <RadioButton
+                            android:id="@+id/personne1"
+                            style="@style/RadioButtonGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Collision"
+
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/personne2"
+                            style="@style/RadioButtonGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Autre" />
+
+
+                    </RadioGroup>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_logoClock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/ic_icon_awesome_map_marker_alt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/radiogroup" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        style="@style/AssureNomText"
+                        android:text="@string/Lieu"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_logoClock" />
+                    <include
+                        android:id="@+id/ProgressBarmap"
+                        layout="@layout/layout_progress_bar"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        android:layout_alignParentStart="true"
+                        android:layout_width="0dp"
+                        android:layout_height="300dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        android:layout_alignParentLeft="true" />
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="0dp"
+                        android:layout_height="300dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_Scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/ic_iscanner"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/map" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/scan"
+                        style="@style/AssureNomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/Scan"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_Scan" />
+                    <include
+                        android:id="@+id/ProgressBarscan1"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="170dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toStartOf="@+id/img_scan2"
+                        app:layout_constraintHorizontal_bias="0.04"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/scan"
+
+                        android:orientation="vertical"
+
+                        android:visibility="visible"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_scan1"
+                        android:layout_width="0dp"
+                        android:layout_height="170dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toStartOf="@+id/img_scan2"
+                        app:layout_constraintHorizontal_bias="0.04"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/scan" />
+
+                    <include
+                        android:id="@+id/ProgressBarscan2"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="170dp"
+
+
+                        android:orientation="vertical"
+
+                        android:visibility="visible"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_scan1"
+                        app:layout_constraintTop_toBottomOf="@+id/scan"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_scan2"
+                        android:layout_width="0dp"
+                        android:layout_height="170dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_scan1"
+                        app:layout_constraintTop_toBottomOf="@+id/scan" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_Degats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/ic_icon_material_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_scan1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/degatsText"
+                        style="@style/AssureNomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/Photos"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_Degats" />
+
+                    <include
+                        android:id="@+id/ProgressBardegat1"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toStartOf="@+id/img_Degats2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText"
+                        android:orientation="vertical"
+
+                        android:visibility="visible"
+
+
+                        />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_Degats1"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toStartOf="@+id/img_Degats2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText" />
+
+                    <include
+                        android:id="@+id/ProgressBardegat2"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+
+                        app:layout_constraintEnd_toStartOf="@+id/img_Degats3"
+                        app:layout_constraintStart_toEndOf="@+id/img_Degats1"
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText"
+
+
+                        />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_Degats2"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+                        android:orientation="vertical"
+
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toStartOf="@+id/img_Degats3"
+                        app:layout_constraintStart_toEndOf="@+id/img_Degats1"
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_Degats3"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_Degats2"
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText" />
+                    <include
+                        android:id="@+id/ProgressBardegat3"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_Degats2"
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText"
+                        android:orientation="vertical"
+
+                        android:visibility="visible"
+                        />
+
+                    <include
+                        android:id="@+id/ProgressBardegat4"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_Degats2" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_Degats4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginRight="32dp"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_Degats2" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/ic_icon_material_videocam"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.308"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_Degats4" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_video"
+                        style="@style/AssureNomText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/Scan"
+                        app:layout_constraintStart_toEndOf="@+id/img_video"
+                        app:layout_constraintTop_toBottomOf="@+id/img_Degats4" />
+
+
+                    <include
+                        android:id="@+id/ProgressBarvideo"
+                        layout="@layout/layout_progress_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="250dp"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginRight="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_video"
+
+                        />
+
+                    <VideoView
+                        android:id="@+id/video"
+                        android:layout_width="0dp"
+                        android:layout_height="250dp"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginRight="60dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_video" />
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnNon"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginRight="60dp"
+                        android:layout_marginBottom="24dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_se_connecter"
+                        android:text="@string/Planifier"
+                        android:textColor="@color/white"
+                        android:onClick="@{() -> viewModel.pressButtonPlanifier()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ProgressBarvideo" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>
+</layout>

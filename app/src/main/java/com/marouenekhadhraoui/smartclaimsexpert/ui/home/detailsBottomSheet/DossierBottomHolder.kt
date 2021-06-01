@@ -21,7 +21,7 @@ class DossierBottomHolder constructor(itemView: View) :
     @RequiresApi(Build.VERSION_CODES.M)
     fun bind(dossier: DossierModel) {
 
-        itemView.numeroDossier.text = dossier.id.toString()
+        itemView.numeroDossier.text = dossier.idDossier.toString()
         itemView.etatDossier.text = dossier.etat
 
     }

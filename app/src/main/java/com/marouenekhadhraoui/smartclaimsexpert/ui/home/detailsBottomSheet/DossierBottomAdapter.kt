@@ -16,8 +16,6 @@ class DossierBottomAdapter constructor(private val onItemClicked: (DossierModel)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DossierBottomHolder {
 
-
-
         return DossierBottomHolder(parent)
     }
 
@@ -37,14 +35,4 @@ class DossierBottomAdapter constructor(private val onItemClicked: (DossierModel)
 
     override fun getItemCount(): Int = list.size
 
-
-
-
-    fun startActivity(activity: Activity, view: View, date: String) {
-        val intent = Intent(view.context, activity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-        intent.action = TO_SIGNIN_OR_SIGNUP
-        intent.putExtra("date", date)
-        view.context.startActivity(intent)
-    }
 }

@@ -13,6 +13,8 @@ import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
@@ -37,7 +39,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
 
-
+    private lateinit var navDirections: NavDirections
     @Inject
     lateinit var logger: Logger
 
@@ -170,24 +172,35 @@ class HomeFragment : Fragment() {
             }
         }
 
+    }
+    fun setNavDirections(bundle: Bundle) {
+
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+
+            override fun getActionId(): Int {
+                return R.id.action_homeFragment_to_bottomSheet
+            }
+        }
+
 
     }
     fun setAdapter() {
 
         linearLayoutManager = LinearLayoutManager(requireContext())
         binding?.recyclerViewDashboard?.layoutManager = linearLayoutManager
-        val adapter = DossierAdapter { model ->
-            parentFragmentManager.let {
-                logger.log("check id")
-                logger.log(model.id.toString())
-                logger.log(model.identifiant)
 
-                val bundle = bundleOf("id" to model.id.toString(),"nom" to model.identifiant )
-                DetailsBottomSheetFragment.newInstance(bundle).apply {
-                    arguments = bundle
-                    show(it, tag)
-                }
-            }
+        val adapter = DossierAdapter { model ->
+            logger.log("id model to string")
+            logger.log(model.id.toString())
+            logger.log(model.id.toString())
+            logger.log(model.id.toString())
+            logger.log(model.id.toString())
+            val bundle = bundleOf("id" to model.idDossier.toString(),"nom" to model.identifiant )
+            setNavDirections(bundle)
+            Navigation.findNavController(requireView()).navigate(navDirections)
         }
         adapter.setItem(listDossiers)
         binding?.recyclerViewDashboard?.adapter = adapter
@@ -204,12 +217,10 @@ class HomeFragment : Fragment() {
         recyclerViewDashboard.layoutManager = linearLayoutManager
 
         val adapter = DossierAdapter { model ->
-            parentFragmentManager.let {
-                val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
-                DetailsBottomSheetFragment.newInstance(bundle).apply {
-                    show(it, tag)
-                }
-            }
+            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            setNavDirections(bundle)
+            Navigation.findNavController(requireView()).navigate(navDirections)
+
         }
         adapter.setItem(listDossiers.filter { it.etat.equals(filtre) })
         recyclerViewDashboard.adapter = adapter
@@ -223,12 +234,11 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            parentFragmentManager.let {
-                val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
-                DetailsBottomSheetFragment.newInstance(bundle).apply {
-                    show(it, tag)
-                }
-            }
+
+            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            setNavDirections(bundle)
+            Navigation.findNavController(requireView()).navigate(navDirections)
+
         }
 
         adapter.setItem(listDossiers.sortedBy { it.identifiant })
@@ -243,12 +253,9 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            parentFragmentManager.let {
-                val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
-                DetailsBottomSheetFragment.newInstance(bundle).apply {
-                    show(it, tag)
-                }
-            }
+            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            setNavDirections(bundle)
+            Navigation.findNavController(requireView()).navigate(navDirections)
         }
 
         adapter.setItem(listDossiers.sortedByDescending { it.identifiant })
@@ -263,12 +270,9 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            parentFragmentManager.let {
-                val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
-                DetailsBottomSheetFragment.newInstance(bundle).apply {
-                    show(it, tag)
-                }
-            }
+            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            setNavDirections(bundle)
+            Navigation.findNavController(requireView()).navigate(navDirections)
         }
 
         adapter.setItem(listDossiers.sortedBy { SimpleDateFormat("dd-MM-yyyy").parse(it.date) })
@@ -283,12 +287,9 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            parentFragmentManager.let {
-                val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
-                DetailsBottomSheetFragment.newInstance(bundle).apply {
-                    show(it, tag)
-                }
-            }
+            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            setNavDirections(bundle)
+            Navigation.findNavController(requireView()).navigate(navDirections)
         }
 
         adapter.setItem(listDossiers.sortedByDescending { SimpleDateFormat("dd-MM-yyyy").parse(it.date) })
