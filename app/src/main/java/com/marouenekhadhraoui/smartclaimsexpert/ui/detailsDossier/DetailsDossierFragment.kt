@@ -2,6 +2,7 @@ package com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier
 
 import android.location.Location
 import android.location.LocationManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import coil.load
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -56,6 +58,7 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
     @Inject
     lateinit var logger: Logger
     private lateinit var location: Location
+    private lateinit  var uriVideo: Uri
 
 
 
@@ -76,6 +79,7 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
         bindViewModel()
         observeDossiers()
         observeButton()
+        observeImage()
 
     }
     fun bindViewModel() {
@@ -178,12 +182,11 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
             // Handle any errors
         }
         vid1ref.downloadUrl.addOnSuccessListener { url ->
-            val mediaController = MediaController(context)
-            mediaController.setAnchorView(video)
-            video.setMediaController(mediaController)
-            video.setVideoURI(url)
-            video.requestFocus()
+            Glide.with(requireContext()).load(url).thumbnail(0.8f).fitCenter()
+                    .into(videoImage)
+            uriVideo=url
         }.addOnFailureListener {
+
             // Handle any errors
         }
     }
@@ -191,14 +194,12 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
  fun observeButton()
  {
      viewModel.pressBtnPlanifierEvent.observe(viewLifecycleOwner, Observer {
-
          val bundle = bundleOf("id" to arguments?.get("id").toString())
          setNavDirections(bundle)
          val navController = findNavController()
          navController.navigate(navDirections)
 
      })
-
  }
 
 
@@ -211,13 +212,31 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
             }
 
             override fun getActionId(): Int {
-                return R.id.action_detailsDossierFragment_to_planifierVisioDialogFragment
+                return R.id.action_detailsDossierFragment_to_dialogTypeExpertise
             }
         }
 
 
     }
+    fun setNavDirectionsToVideo(bundle: Bundle) {
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+            override fun getActionId(): Int {
+                return R.id.action_detailsDossierFragment_to_videoLectureDialog
+            }
+        }
+    }
+    fun observeImage()
+    { imagePlay.setOnClickListener(View.OnClickListener {
+            val bundle = bundleOf("uriVideo" to uriVideo.toString())
+            setNavDirectionsToVideo(bundle)
+            val navController = findNavController()
+            navController.navigate(navDirections)
 
+        })
+    }
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap

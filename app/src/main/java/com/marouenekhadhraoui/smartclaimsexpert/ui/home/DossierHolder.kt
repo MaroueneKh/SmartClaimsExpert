@@ -8,7 +8,6 @@ import androidx.annotation.RequiresApi
 
 import androidx.recyclerview.widget.RecyclerView
 import com.marouenekhadhraoui.smartclaimsexpert.R
-import kotlinx.android.synthetic.main.fragment_home.view.textView
 import kotlinx.android.synthetic.main.layout_dossier_item.view.*
 
 class DossierHolder constructor(itemView: View) :
@@ -26,8 +25,6 @@ class DossierHolder constructor(itemView: View) :
         itemView.textView2.text = dossier.id.toString()
         itemView.textView3.text = dossier.date.subSequence(0,10)
         itemView.textView4.text = dossier.etat
-
-
 
 
 

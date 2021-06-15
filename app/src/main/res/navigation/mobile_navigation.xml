@@ -30,8 +30,11 @@
         android:label="fragment_details_dossier"
         tools:layout="@layout/fragment_details_dossier" >
         <action
-            android:id="@+id/action_detailsDossierFragment_to_planifierVisioDialogFragment"
-            app:destination="@id/planifierVisioDialogFragment" />
+            android:id="@+id/action_detailsDossierFragment_to_videoLectureDialog"
+            app:destination="@id/videoLectureDialog" />
+        <action
+            android:id="@+id/action_detailsDossierFragment_to_dialogTypeExpertise"
+            app:destination="@id/dialogTypeExpertise" />
     </fragment>
     <dialog
         android:id="@+id/planifierVisioDialogFragment"
@@ -45,4 +48,25 @@
         android:id="@+id/planifierVisioDialogTimeFragment"
         android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.PlanifierVisioDialogTimeFragment"
         android:label="PlanifierVisioDialogTimeFragment" />
+    <dialog
+        android:id="@+id/videoLectureDialog"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VideoLectureDialog"
+        android:label="VideoLectureDialog" />
+    <dialog
+        android:id="@+id/dialogTypeExpertise"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.DialogTypeExpertise"
+        android:label="DialogTypeExpertise" >
+        <action
+            android:id="@+id/action_dialogTypeExpertise_to_videoVisioFragment"
+            app:destination="@id/videoVisioFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/videoVisioFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.videovisio.VideoVisioFragment"
+        tools:layout="@layout/video_visio_recorded_fragment"
+        android:label="VideoVisioFragment" >
+        <action
+            android:id="@+id/action_videoVisioFragment_to_planifierVisioDialogFragment"
+            app:destination="@id/planifierVisioDialogFragment" />
+    </fragment>
 </navigation>

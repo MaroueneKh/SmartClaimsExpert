@@ -1,5 +1,6 @@
 package com.marouenekhadhraoui.smartclaimsexpert.network
 
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.signin.ExpertModel
@@ -19,6 +20,25 @@ interface ApiService {
 
     @POST("api/getDetailsAssure")
     suspend fun getDetailAssure(@Query(value = "token") token: String): List<DetailAssureModel>
+
+    @POST("api/ajouterVisio")
+    suspend fun ajouterVisio(
+        @Query(value = "idDossier") idDossier: Int,
+        @Query(value = "idAssure") idAssure: Int,
+                             @Query(value = "idExpert") idExpert: Int,
+                             @Query(value = "date") date: String,
+                             @Query(value = "time") time: String,
+        @Query(value = "effectue") effectue: Int,
+                             ): List<VisioModel>
+    @POST("api/getVisio")
+    suspend fun getVisio(
+        @Query(value = "idDossier") idDossier: Int,
+        ): List<VisioModel>
+    @POST("api/modifierVisio")
+    suspend fun modifierVisio(
+        @Query(value = "idDossier") idDossier: Int,
+        @Query(value = "effectue") effectue: Int,
+    ): List<VisioModel>
 
 
 

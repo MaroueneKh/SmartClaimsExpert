@@ -28,7 +28,7 @@
             android:numbersTextColor="@color/mainblue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/degatsText">
+            app:layout_constraintTop_toTopOf="parent">
 
 
         </TimePicker>

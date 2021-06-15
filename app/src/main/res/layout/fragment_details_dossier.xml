@@ -116,8 +116,9 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnNon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/StepperLayout">
@@ -135,6 +136,7 @@
                         android:id="@+id/imgIcon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:src="@drawable/ic_imd_car"
@@ -146,6 +148,7 @@
                         style="@style/AssureNomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/roboto_bold"
                         android:gravity="center_horizontal"
                         android:text="@string/Type"
@@ -195,32 +198,34 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textView2"
+                        style="@style/AssureNomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/roboto_bold"
-                        style="@style/AssureNomText"
                         android:text="@string/Lieu"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/img_logoClock" />
+
                     <include
                         android:id="@+id/ProgressBarmap"
                         layout="@layout/layout_progress_bar"
-                        android:orientation="vertical"
-                        android:visibility="visible"
-                        android:layout_alignParentStart="true"
                         android:layout_width="0dp"
                         android:layout_height="300dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="32dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
+                        android:orientation="vertical"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2"
-                        android:layout_alignParentLeft="true" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
                     <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/map"
                         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -262,6 +267,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/img_Scan" />
+
                     <include
                         android:id="@+id/ProgressBarscan1"
                         layout="@layout/layout_progress_bar"
@@ -277,20 +283,19 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
+                        android:orientation="vertical"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toStartOf="@+id/img_scan2"
                         app:layout_constraintHorizontal_bias="0.04"
+
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/scan"
 
-                        android:orientation="vertical"
-
-                        android:visibility="visible"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/scan" />
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_scan1"
                         android:layout_width="0dp"
-                        android:layout_height="170dp"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -313,10 +318,8 @@
                         android:layout_height="170dp"
 
 
-                        android:orientation="vertical"
-
-                        android:visibility="visible"
                         android:layout_alignParentStart="true"
+
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
@@ -326,15 +329,16 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
+                        android:orientation="vertical"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/img_scan1"
-                        app:layout_constraintTop_toBottomOf="@+id/scan"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/scan" />
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_scan2"
                         android:layout_width="0dp"
-                        android:layout_height="170dp"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -348,7 +352,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/img_scan1"
                         app:layout_constraintTop_toBottomOf="@+id/scan" />
-
 
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -381,8 +384,8 @@
                     <include
                         android:id="@+id/ProgressBardegat1"
                         layout="@layout/layout_progress_bar"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -391,21 +394,19 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="24dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginRight="32dp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_Degats2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/degatsText"
                         android:orientation="vertical"
-
                         android:visibility="visible"
 
 
+
                         />
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_Degats1"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -414,29 +415,25 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginLeft="32dp"
                         android:layout_marginTop="24dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginRight="32dp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_Degats2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/degatsText" />
 
                     <include
                         android:id="@+id/ProgressBardegat2"
                         layout="@layout/layout_progress_bar"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="24dp"
-
-                        app:layout_constraintEnd_toStartOf="@+id/img_Degats3"
-                        app:layout_constraintStart_toEndOf="@+id/img_Degats1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/degatsText"
+                        android:visibility="visible"
+
 
 
                         />
@@ -444,64 +441,52 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_Degats2"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="24dp"
-                        android:orientation="vertical"
 
-                        android:visibility="visible"
-                        app:layout_constraintEnd_toStartOf="@+id/img_Degats3"
-                        app:layout_constraintStart_toEndOf="@+id/img_Degats1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/degatsText" />
-
-
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_Degats3"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginLeft="32dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/img_Degats2"
                         app:layout_constraintTop_toBottomOf="@+id/degatsText" />
+
                     <include
                         android:id="@+id/ProgressBardegat3"
                         layout="@layout/layout_progress_bar"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginLeft="32dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/img_Degats2"
-                        app:layout_constraintTop_toBottomOf="@+id/degatsText"
                         android:orientation="vertical"
-
                         android:visibility="visible"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+
+                        app:layout_constraintTop_toBottomOf="@+id/degatsText" />
 
                     <include
                         android:id="@+id/ProgressBardegat4"
@@ -525,7 +510,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_Degats4"
                         android:layout_width="wrap_content"
-                        android:layout_height="100dp"
+                        android:layout_height="300dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -552,10 +537,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
                         android:src="@drawable/ic_icon_material_videocam"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.308"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/txt_video"
                         app:layout_constraintTop_toBottomOf="@+id/img_Degats4" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -563,12 +548,11 @@
                         style="@style/AssureNomText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
                         android:layout_marginTop="24dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/Scan"
-                        app:layout_constraintStart_toEndOf="@+id/img_video"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/img_Degats4" />
 
 
@@ -582,56 +566,77 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="60dp"
                         android:layout_marginRight="60dp"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txt_video"
 
                         />
 
-                    <VideoView
-                        android:id="@+id/video"
+
+                    <ImageView
+                        android:id="@+id/videoImage"
                         android:layout_width="0dp"
-                        android:layout_height="250dp"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_height="300dp"
+                        android:layout_marginStart="200dp"
+                        android:layout_marginLeft="200dp"
                         android:layout_marginTop="24dp"
-                        android:layout_marginEnd="60dp"
-                        android:layout_marginRight="60dp"
+                        android:layout_marginEnd="200dp"
+                        android:layout_marginRight="200dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_baseline_play_arrow_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txt_video" />
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnNon"
+                    <ImageView
+                        android:id="@+id/imagePlay"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="60dp"
-                        android:layout_marginLeft="60dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="200dp"
+                        android:layout_marginLeft="200dp"
                         android:layout_marginTop="24dp"
-                        android:layout_marginEnd="60dp"
-                        android:layout_marginRight="60dp"
-                        android:layout_marginBottom="24dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_se_connecter"
-                        android:text="@string/Planifier"
-                        android:textColor="@color/white"
-                        android:onClick="@{() -> viewModel.pressButtonPlanifier()}"
+                        android:layout_marginEnd="200dp"
+                        android:layout_marginRight="200dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_baseline_play_arrow_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ProgressBarvideo" />
+                        app:layout_constraintTop_toBottomOf="@+id/txt_video" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
             </LinearLayout>
 
 
         </ScrollView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_se_connecter"
+            android:text="@string/Faire"
+            android:textColor="@color/white"
+            android:onClick="@{() -> viewModel.pressButtonPlanifier()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

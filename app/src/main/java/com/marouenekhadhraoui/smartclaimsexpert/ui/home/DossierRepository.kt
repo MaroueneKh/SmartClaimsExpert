@@ -10,6 +10,7 @@ class DossierRepository @Inject constructor(
 ) {
     suspend fun getDossierPourExpert(token: String) = apiHelper.getDossierPourExpert(token)
     suspend fun getDetailAssure(token: String) = apiHelper.getDetailAssure(token)
+    suspend fun getVisio(idDossier: Int) = apiHelper.getVisio(idDossier)
 
 
 }

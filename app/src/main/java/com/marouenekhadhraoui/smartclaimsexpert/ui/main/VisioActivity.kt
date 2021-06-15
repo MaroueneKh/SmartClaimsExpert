@@ -2,18 +2,25 @@ package com.marouenekhadhraoui.smartclaimsexpert.ui.main
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import com.marouenekhadhraoui.smartclaimsexpert.R
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_visio.*
 import org.webrtc.IceCandidate
 import org.webrtc.MediaStream
 import org.webrtc.SessionDescription
 
+
+@AndroidEntryPoint
 class VisioActivity : AppCompatActivity() {
     companion object {
         private const val CAMERA_PERMISSION_REQUEST_CODE = 1
@@ -23,7 +30,7 @@ class VisioActivity : AppCompatActivity() {
     private lateinit var rtcClient: RTCClient
     private lateinit var signallingClient: SignallingClient
 
-
+    private val viewModel: VisioViewModel by viewModels()
 
 
     private val sdpObserver = object : AppSdpObserver() {
@@ -33,12 +40,14 @@ class VisioActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visio)
-       // checkCameraPermission()
+        checkCameraPermission()
     }
-  /*  private fun checkCameraPermission() {
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 CAMERA_PERMISSION
             ) != PackageManager.PERMISSION_GRANTED) {
@@ -47,6 +56,7 @@ class VisioActivity : AppCompatActivity() {
             onCameraPermissionGranted()
         }
     }
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun onCameraPermissionGranted() {
         rtcClient = RTCClient(
             application,
@@ -59,48 +69,53 @@ class VisioActivity : AppCompatActivity() {
 
                 override fun onAddStream(p0: MediaStream?) {
                     super.onAddStream(p0)
-                //    p0?.videoTracks?.get(0)?.addSink(remote_view)
+                   p0?.videoTracks?.get(0)?.addSink(remote_view)
                 }
             }
         )
-     //   rtcClient.initSurfaceView(remote_view)
-   //     rtcClient.initSurfaceView(local_view)
-   //     rtcClient.startLocalVideoCapture(local_view)
+        rtcClient.initSurfaceView(remote_view)
+        rtcClient.initSurfaceView(local_view)
+        rtcClient.startLocalVideoCapture(local_view)
         signallingClient =
             SignallingClient(
                 createSignallingClientListener()
             )
-      //  call_button.setOnClickListener {
-
-
+        call_button.setOnClickListener {
             rtcClient.call(sdpObserver) }
+        cancel_button.setOnClickListener {
+            //
+            val bundle = intent.extras
+            viewModel.modifierVisio(bundle?.get("id").toString().toInt(),1)
+              finish()
+         }
     }
     private fun createSignallingClientListener() = object :
         SignallingClientListener {
         override fun onConnectionEstablished() {
-          //  call_button.isClickable = true
+            call_button.isClickable = true
         }
 
         override fun onOfferReceived(description: SessionDescription) {
-         //   rtcClient.onRemoteSessionReceived(description)
-         //   rtcClient.answer(sdpObserver)
-        //    remote_view_loading.isGone = true
+            rtcClient.onRemoteSessionReceived(description)
+            rtcClient.answer(sdpObserver)
+            remote_view_loading.isGone = true
         }
 
         override fun onAnswerReceived(description: SessionDescription) {
-          //  rtcClient.onRemoteSessionReceived(description)
-          //  remote_view_loading.isGone = true
+            rtcClient.onRemoteSessionReceived(description)
+            remote_view_loading.isGone = true
+
         }
 
         override fun onIceCandidateReceived(iceCandidate: IceCandidate) {
-          //  rtcClient.addIceCandidate(iceCandidate)
+            rtcClient.addIceCandidate(iceCandidate)
         }
     }
 
 
     private fun requestCameraPermission(dialogShown: Boolean = false) {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-               // CAMERA_PERMISSION
+                CAMERA_PERMISSION
             ) && !dialogShown) {
             showPermissionRationaleDialog()
         } else {
@@ -125,9 +140,10 @@ class VisioActivity : AppCompatActivity() {
                 .show()
     }
 
- //   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-   //     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-     //   if (requestCode == CAMERA_PERMISSION_REQUEST_CODE && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+  @RequiresApi(Build.VERSION_CODES.M)
+  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
             onCameraPermissionGranted()
         } else {
             onCameraPermissionDenied()
@@ -143,5 +159,5 @@ class VisioActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-*/
+
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marouenekhadhraoui.smartclaimsexpert">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:name=".SmartClaimsExpertApplication"
         android:allowBackup="true"
@@ -18,21 +16,31 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".ui.signin.SignInActivity" />
-        <activity android:name=".ui.splash.SecondSplashActivity" />
-        <activity android:name=".ui.main.VisioActivity" />
+        <activity android:name=".ui.signin.SignInActivity"
+
+            />
+        <activity android:name=".ui.splash.SecondSplashActivity"
+
+            />
+        <activity android:name=".ui.main.VisioActivity">
+
+        </activity>
+
         <activity
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
+
             android:theme="@style/Theme.SmartClaimsExpert.NoActionBar" />
         <activity
             android:name=".ui.splash.SplashActivity"
+
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

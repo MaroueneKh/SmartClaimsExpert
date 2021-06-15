@@ -1,28 +1,20 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier
 
-import android.app.Dialog
-import android.content.DialogInterface
+
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
-import androidx.core.os.bundleOf
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.*
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
-import com.marouenekhadhraoui.smartclaimsexpert.utils.fadeTo
-import com.marouenekhadhraoui.smartclaimsexpert.utils.invisible
-import com.marouenekhadhraoui.smartclaimsexpert.utils.visible
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.PickDateFragment
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.PickTimeFragment
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.PlanifierExpertiseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.dialog_planifier.*
 import kotlinx.android.synthetic.main.dialog_planifier.view.*
 import javax.inject.Inject
 import android.view.LayoutInflater as LayoutInflater1
@@ -31,11 +23,15 @@ private const val NUM_PAGES = 3
 @AndroidEntryPoint
 class PlanifierVisioDialogFragment : DialogFragment() {
 
+
+    private val viewModel: PlanifierVisioModelView by activityViewModels()
+
     @Inject
     lateinit var logger: Logger
 
     private lateinit var viewPager: ViewPager2
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
             inflater: LayoutInflater1,
             container: ViewGroup?,
@@ -47,25 +43,25 @@ class PlanifierVisioDialogFragment : DialogFragment() {
         // USE childFragmentManager
         val pagerAdapter = ScreenSlidePagerAdapter(requireActivity())
         viewPager.adapter = pagerAdapter
-
-
        myview.suivant.setOnClickListener(View.OnClickListener {
-
-            viewPager.currentItem = viewPager.currentItem + 1
-
-           if (viewPager.currentItem == 2)
+           when(viewPager.currentItem)
            {
-               dismiss()
+               0-> viewPager.currentItem = viewPager.currentItem + 1
+               1->{
+                   viewModel.ajouterVisio(arguments?.get("id").toString().toInt(),1,1,viewModel.date.value!!,viewModel.time.value!!)
+                   viewPager.currentItem = viewPager.currentItem + 1
+
+               }
+               2-> dismiss()
+
            }
+
         })
-
         myview.cancel.setOnClickListener(View.OnClickListener {
-
               dismiss()
         })
         return myview
     }
-
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = NUM_PAGES
 
@@ -73,10 +69,9 @@ class PlanifierVisioDialogFragment : DialogFragment() {
                 when (position) {
                     0 -> PickDateFragment()
                     1 -> PickTimeFragment()
-                    2->  PlanifierExpertiseFragment()
+                    2-> PlanifierExpertiseFragment()
 
                     else -> PickDateFragment()
                 }
     }
-
 }

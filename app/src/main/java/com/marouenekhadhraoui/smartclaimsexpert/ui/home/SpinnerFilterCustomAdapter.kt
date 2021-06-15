@@ -44,11 +44,11 @@ class SpinnerFilterCustomAdapter(val context: Context, var dataSource: List<Filt
 
     private class ItemHolder(row: View?) {
         val label: TextView
-        val img: ImageView
+
 
         init {
             label = row?.findViewById(R.id.text) as TextView
-            img = row?.findViewById(R.id.img) as ImageView
+
         }
     }
 

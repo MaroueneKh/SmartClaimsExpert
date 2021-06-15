@@ -20,69 +20,40 @@
         android:layout_height="match_parent">
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_logoClock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="70dp"
-            android:src="@drawable/ic_groupe_16186"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            style="@style/SmartClaimsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/img_logoClock"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TextView
             android:id="@+id/textViewDashboard"
             style="@style/DashboardText"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/img_logoClock"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/Bienvenue"
             style="@style/BienvenueText"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDashboard" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/divider2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="32dp"
-            android:background="@color/grey"
+            android:layout_marginTop="16dp"
+            android:background="@color/greylight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_logoClock" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewDashboard" />
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgIcon"
@@ -92,91 +63,85 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:src="@drawable/ic_dashboard_blue"
+            app:layout_constraintEnd_toStartOf="@+id/Dossiers"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
 
         <TextView
             android:id="@+id/Dossiers"
             style="@style/DashboardText"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="46dp"
             android:gravity="center_horizontal"
             android:text="@string/Dossiers"
+
             app:layout_constraintStart_toEndOf="@+id/imgIcon"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filtre_spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/border_spinner"
-            app:layout_constraintEnd_toStartOf="@+id/relativeLayout2"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:hint="@string/Filtre"
+            android:textColorHint="@color/mainblue"
+            app:layout_constraintEnd_toStartOf="@+id/tri_spinner"
             app:layout_constraintStart_toEndOf="@+id/Dossiers"
             app:layout_constraintTop_toBottomOf="@+id/divider2">
 
-            <Spinner
-                android:id="@+id/filtre_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                tools:layout_editor_absoluteX="15dp"
-                tools:layout_editor_absoluteY="333dp" />
-        </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/border_spinner"
-            app:layout_constraintEnd_toStartOf="@+id/editIdentifiant"
-            app:layout_constraintStart_toEndOf="@+id/relativeLayout"
-            app:layout_constraintTop_toBottomOf="@+id/divider2">
-
-            <Spinner
-                android:id="@+id/tri_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                tools:layout_editor_absoluteX="15dp"
-                tools:layout_editor_absoluteY="333dp" />
-        </RelativeLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editIdentifiant"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:ems="10"
-            android:hint="Recherche"
-            android:theme="@style/EditTextThemeOverlay"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/relativeLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
-            app:startIconDrawable="@drawable/ic_feather_mail">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
+                android:id="@+id/filtreText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/greylight"
-                android:textColor="@color/white" />
+                android:backgroundTint="@color/white"
+                android:inputType="none"
+                android:maxLines="1"
+                android:textColor="@color/mainblue" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tri_spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/white"
+            android:hint="@string/Tri"
+            android:textColorHint="@color/mainblue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/filtre_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/divider2">
+
+
+            <AutoCompleteTextView
+                android:id="@+id/triText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:inputType="none"
+                android:maxLines="1"
+                android:textColor="@color/mainblue" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
         <include
@@ -198,22 +163,20 @@
             android:id="@+id/recyclerViewDashboard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
             android:clipToPadding="false"
             android:orientation="vertical"
             android:padding="4dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/filtre_spinner">
 
 
         </androidx.recyclerview.widget.RecyclerView>
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

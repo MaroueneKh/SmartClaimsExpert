@@ -1,5 +1,7 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +20,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.MarginItemDecoration
+import com.marouenekhadhraoui.smartclaimsexpert.ui.main.VisioActivity
 import com.marouenekhadhraoui.smartclaimsexpert.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.bottomsheet.*
@@ -57,8 +60,18 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
         setNom()
         setDetailsAssure()
         observeDossiers()
+        img_icon_call.setOnClickListener(View.OnClickListener {
+            startActivityToVisio(VisioActivity(),requireView())
+        })
 
 
+    }
+
+    fun startActivityToVisio(activity: Activity, view: View,) {
+        val intent = Intent(view.context, activity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.action = TO_SIGNIN_OR_SIGNUP
+        view.context.startActivity(intent)
     }
 
     fun setNom() {

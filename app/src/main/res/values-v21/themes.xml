@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RadioButtonGroup" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="colorControlNormal">@color/mainblue</item>
+        <item name="android:buttonTint">@color/mainblue</item>
+    </style>
+
+    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="colorPrimary">@color/mainblue</item>
+        <item name="colorAccent">@color/mainblue</item>
+        <item name="colorOnPrimary">@color/mainblue</item>
+        <item name="colorControlNormal">@color/mainblue</item>
+        <item name="colorSecondary">@color/mainblue</item>
+        <item name="colorOnPrimarySurface">@color/mainblue</item>
+    </style>
+
+</resources>

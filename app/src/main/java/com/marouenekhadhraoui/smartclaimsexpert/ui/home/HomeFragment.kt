@@ -1,13 +1,15 @@
+
 package com.marouenekhadhraoui.smartclaimsexpert.ui.home
 
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
@@ -19,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.FragmentHomeBinding
-import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailsBottomSheetFragment
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Status
 import com.marouenekhadhraoui.smartclaimsexpert.utils.internetErr
 import com.marouenekhadhraoui.smartclaimsexpert.utils.invisible
@@ -81,61 +82,85 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSpinnerFiltre() {
-        list = listOf(
-                FiltreModel( "En attente de confirmation"),
-                FiltreModel( "En cours de traitement"),
-                FiltreModel( "Validé"),
-        )
-        val customDropDownAdapter = SpinnerFilterCustomAdapter(requireContext(), list)
-        binding?.filtreSpinner?.adapter = customDropDownAdapter
+       // val customDropDownAdapter = SpinnerFilterCustomAdapter(requireContext(), list)
 
-        filtre_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter) = customDropDownAdapter
+        val items = listOf("En cours d'envoie", "En cours de confirmation", "Validé")
+        val adapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_filtres, items)
 
-            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-                when (pos) {
-                    0 -> filterListByEtat("En cours d'envoie")
-                    1 -> filterListByEtat("En cours de confirmation")
-                    2 -> filterListByEtat("Validé")
+        (filtreText)?.setAdapter(adapter)
+        filtreText.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                logger.log("on text changed")
+                if (s.toString() == "En cours d'envoie")
+                {
+                    filterListByEtat("en cours d'envoie")
+                }
+                else if(s.toString().equals("Validé"))
+                {
+                    filterListByEtat("Validé")
+                }
+                else if(s.toString().equals("En cours de confirmation"))
+                {
+                    filterListByEtat("En cours de confirmation")
                 }
 
             }
-
-            override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
-
-            }
-
-        }
-
+        })
 
     }
     private fun setSpinnerTri() {
-        listTri = listOf(
-                TriModel( "Nom",R.drawable.tri_down_icon),
-                TriModel( "Nom",R.drawable.tri_up_icon),
-                TriModel( "Date",R.drawable.tri_down_icon),
-                TriModel( "Date",R.drawable.tri_up_icon)
-        )
-        val customDropDownAdapter = SpinnerTriCustomerAdapter(requireContext(), listTri)
-        binding?.triSpinner?.adapter = customDropDownAdapter
+
+        val items = listOf("Nom Ascendant", "Nom Descendant", "Date Ascendant","Date Descendant")
+        val adapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_tri, items)
+
+        (triText)?.setAdapter(adapter)
 
 
-        tri_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-                when (pos) {
-                    0 -> triListBynameAsc()
-                    1 -> triListBynameDesc()
-                    2 -> triListBydateAsc()
-                    3 -> triListBydateDesc()
+        triText.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                logger.log("on text changed")
+                if (s.toString() == "Nom Ascendant")
+                {
+                    triListBynameAsc()
+                }
+                else if(s.toString().equals("Nom Descendant"))
+                {
+                    triListBynameDesc()
+                }
+                else if(s.toString().equals("Date Ascendant"))
+                {
+                    triListBydateAsc()
+                }
+                else if(s.toString().equals("Date Descendant"))
+                {
+                    triListBydateDesc()
                 }
 
             }
+        })
 
-            override fun onNothingSelected(parent: AdapterView<out Adapter>?) {
-
-            }
-
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -217,7 +242,7 @@ class HomeFragment : Fragment() {
         recyclerViewDashboard.layoutManager = linearLayoutManager
 
         val adapter = DossierAdapter { model ->
-            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            val bundle = bundleOf("id" to model.idDossier.toString(),"nom" to model.identifiant )
             setNavDirections(bundle)
             Navigation.findNavController(requireView()).navigate(navDirections)
 
@@ -234,8 +259,7 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-
-            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            val bundle = bundleOf("id" to model.idDossier.toString(),"nom" to model.identifiant )
             setNavDirections(bundle)
             Navigation.findNavController(requireView()).navigate(navDirections)
 
@@ -253,7 +277,7 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            val bundle = bundleOf("id" to model.idDossier.toString(),"nom" to model.identifiant )
             setNavDirections(bundle)
             Navigation.findNavController(requireView()).navigate(navDirections)
         }
@@ -270,7 +294,7 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            val bundle = bundleOf("id" to model.idDossier.toString(),"nom" to model.identifiant )
             setNavDirections(bundle)
             Navigation.findNavController(requireView()).navigate(navDirections)
         }
@@ -287,7 +311,7 @@ class HomeFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext())
         recyclerViewDashboard.layoutManager = linearLayoutManager
         val adapter = DossierAdapter { model ->
-            val bundle = bundleOf(model.id.toString() to "id",model.identifiant to "nom")
+            val bundle = bundleOf("id" to model.idDossier.toString(),"nom" to model.identifiant )
             setNavDirections(bundle)
             Navigation.findNavController(requireView()).navigate(navDirections)
         }
