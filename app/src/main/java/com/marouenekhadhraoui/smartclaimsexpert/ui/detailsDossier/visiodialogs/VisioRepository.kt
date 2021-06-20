@@ -9,6 +9,7 @@ class VisioRepository @Inject constructor(
         private val apiHelper: ApiHelper
 ) {
     suspend fun ajouterVisio(idDossier:Int,idAssure: Int, idExpert: Int, date: String, time: String)= apiHelper.ajouterVisio(idDossier,idAssure,idExpert,date,time,0)
-    suspend fun modifierVisio(idDossier:Int,effectue:Int)= apiHelper.modifierVisio(idDossier,effectue)
-
+    suspend fun modifierVisio(idDossier:Int,effectue:Int,resultat:String)= apiHelper.modifierVisio(idDossier,effectue,resultat)
+    suspend fun ajouterSuivi(idDossier:Int,idAssure: Int, idExpert: Int, date: String, time: String)= apiHelper.ajouterSuivi(idDossier,idAssure,idExpert,date,time,0)
+    suspend fun modifierSuivi(idDossier:Int,effectue:Int,resultat:String)= apiHelper.modifierSuivi(idDossier,effectue,resultat)
 }

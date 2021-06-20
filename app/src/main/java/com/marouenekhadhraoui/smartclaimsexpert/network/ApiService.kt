@@ -1,6 +1,7 @@
 package com.marouenekhadhraoui.smartclaimsexpert.network
 
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.signin.ExpertModel
@@ -38,7 +39,27 @@ interface ApiService {
     suspend fun modifierVisio(
         @Query(value = "idDossier") idDossier: Int,
         @Query(value = "effectue") effectue: Int,
+        @Query(value = "resultat") resultat: String
     ): List<VisioModel>
+    @POST("api/ajouterSuivi")
+    suspend fun ajouterSuivi(
+        @Query(value = "idDossier") idDossier: Int,
+        @Query(value = "idAssure") idAssure: Int,
+        @Query(value = "idExpert") idExpert: Int,
+        @Query(value = "date") date: String,
+        @Query(value = "time") time: String,
+        @Query(value = "effectue") effectue: Int,
+    ): List<SuiviModel>
+    @POST("api/getSuivi")
+    suspend fun getSuivi(
+        @Query(value = "idDossier") idDossier: Int,
+    ): List<SuiviModel>
+    @POST("api/modifierSuivi")
+    suspend fun modifierSuivi(
+        @Query(value = "idDossier") idDossier: Int,
+        @Query(value = "effectue") effectue: Int,
+        @Query(value = "resultat") resultat: String
+    ): List<SuiviModel>
 
 
 

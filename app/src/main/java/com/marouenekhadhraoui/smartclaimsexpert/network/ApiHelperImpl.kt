@@ -2,6 +2,7 @@ package com.marouenekhadhraoui.smartclaimsexpert.network
 
 
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.signin.ExpertModel
@@ -14,9 +15,11 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : Ap
     override suspend fun getDetailAssure(token: String): List<DetailAssureModel> = apiService.getDetailAssure(token)
     override suspend fun ajouterVisio(idDossier:Int,idAssure: Int, idExpert: Int, date: String, time: String,effectue:Int): List<VisioModel> = apiService.ajouterVisio(idDossier,idAssure,idExpert,date,time,0)
     override suspend fun getVisio(idDossier: Int): List<VisioModel> = apiService.getVisio(idDossier)
-    override suspend fun modifierVisio(idDossier: Int, effectue: Int):List<VisioModel> = apiService.modifierVisio(idDossier, effectue)
+    override suspend fun modifierVisio(idDossier: Int, effectue: Int,resultat:String):List<VisioModel> = apiService.modifierVisio(idDossier,effectue,resultat)
 
-
+    override suspend fun ajouterSuivi(idDossier:Int,idAssure: Int, idExpert: Int, date: String, time: String,effectue:Int): List<SuiviModel> = apiService.ajouterSuivi(idDossier,idAssure,idExpert,date,time,0)
+    override suspend fun getSuivi(idDossier: Int): List<SuiviModel> = apiService.getSuivi(idDossier)
+    override suspend fun modifierSuivi(idDossier: Int, effectue: Int,resultat:String):List<SuiviModel> = apiService.modifierSuivi(idDossier,effectue,resultat)
 }
 
 

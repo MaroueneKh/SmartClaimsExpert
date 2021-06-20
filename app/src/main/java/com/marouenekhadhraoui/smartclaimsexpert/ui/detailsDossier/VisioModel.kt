@@ -8,4 +8,5 @@ data class VisioModel(
         val date: String,
         val time: String,
         val effectue: Int,
+        val resultat: String,
 )

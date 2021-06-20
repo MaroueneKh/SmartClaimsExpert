@@ -2,6 +2,7 @@ package com.marouenekhadhraoui.smartclaimsexpert.ui.main
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import org.webrtc.Camera2Enumerator
 import org.webrtc.DefaultVideoDecoderFactory
 import org.webrtc.DefaultVideoEncoderFactory
@@ -147,6 +148,10 @@ class RTCClient(
     fun call(sdpObserver: SdpObserver) = peerConnection?.call(sdpObserver)
 
     fun answer(sdpObserver: SdpObserver) = peerConnection?.answer(sdpObserver)
+    fun endCall(sdpObserver: SdpObserver) {
+
+        peerConnection?.close()
+    }
 
     fun onRemoteSessionReceived(sessionDescription: SessionDescription) {
         peerConnection?.setRemoteDescription(object : SdpObserver {

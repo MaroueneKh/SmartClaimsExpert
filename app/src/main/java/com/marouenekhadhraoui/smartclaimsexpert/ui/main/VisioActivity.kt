@@ -1,27 +1,36 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.main
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import androidx.lifecycle.lifecycleScope
+import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
+import com.marouenekhadhraoui.smartclaimsexpert.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_visio.*
+import kotlinx.coroutines.flow.collect
 import org.webrtc.IceCandidate
 import org.webrtc.MediaStream
 import org.webrtc.SessionDescription
+import java.io.File
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class VisioActivity : AppCompatActivity() {
+class VisioActivity : AppCompatActivity()  {
     companion object {
         private const val CAMERA_PERMISSION_REQUEST_CODE = 1
         private const val CAMERA_PERMISSION = Manifest.permission.CAMERA
@@ -29,6 +38,10 @@ class VisioActivity : AppCompatActivity() {
 
     private lateinit var rtcClient: RTCClient
     private lateinit var signallingClient: SignallingClient
+    @Inject
+    lateinit var logger: Logger
+
+
 
     private val viewModel: VisioViewModel by viewModels()
 
@@ -44,6 +57,9 @@ class VisioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visio)
+
+
+
         checkCameraPermission()
     }
     @RequiresApi(Build.VERSION_CODES.M)
@@ -75,18 +91,64 @@ class VisioActivity : AppCompatActivity() {
         )
         rtcClient.initSurfaceView(remote_view)
         rtcClient.initSurfaceView(local_view)
+
+
         rtcClient.startLocalVideoCapture(local_view)
         signallingClient =
             SignallingClient(
                 createSignallingClientListener()
             )
         call_button.setOnClickListener {
-            rtcClient.call(sdpObserver) }
+            rtcClient.call(sdpObserver)
+
+        }
         cancel_button.setOnClickListener {
             //
-            val bundle = intent.extras
-            viewModel.modifierVisio(bundle?.get("id").toString().toInt(),1)
-              finish()
+            rtcClient.endCall(sdpObserver)
+
+
+
+           val bundle = intent.extras
+            logger.log("idDossier")
+            logger.log(bundle?.get("id").toString())
+            viewModel.getSuivi(bundle?.get("id").toString().toInt())
+            lifecycleScope.launchWhenStarted {
+                viewModel.suivi.collect {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            if (it.data!!.isEmpty()) {
+                                logger.log("here")
+                                viewModel.modifierVisio(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
+                                finish()
+
+                            }
+                            else{
+                                logger.log("not here")
+                                viewModel.modifierSuivi(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
+                                finish()
+                            }
+
+                        }
+                        Status.LOADING -> {
+
+                        }
+                        Status.ERROR -> {
+
+                        }
+                    }
+                }
+            }
+
+
+
+            //local_view.clearImage()
+            //local_view.release()
+           // intent.action = TO_VISIO_FRAGMENT
+           // startActivity(intenttoFRagment,bundle)
+            //finish()
+
+
+
          }
     }
     private fun createSignallingClientListener() = object :
@@ -154,10 +216,13 @@ class VisioActivity : AppCompatActivity() {
         Toast.makeText(this, "Camera Permission Denied", Toast.LENGTH_LONG).show()
     }
 
+
     override fun onDestroy() {
         signallingClient.destroy()
         super.onDestroy()
     }
+
+
 
 
 }

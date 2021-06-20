@@ -1,4 +1,4 @@
-package com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs
+package com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs
 
 import android.os.Build
 import android.os.Bundle
@@ -9,24 +9,21 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.DialogPlanifierDateBinding
+import com.marouenekhadhraoui.smartclaimsexpert.databinding.DialogPlanifierDateSuiviBinding
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.PlanifierVisioModelView
 import kotlinx.android.synthetic.main.dialog_planifier_date.*
 import java.util.*
-
-
 import javax.inject.Inject
 
-class PickDateFragment : Fragment() {
+class PlanifierDateSuiviFragment : Fragment() {
 
 
-    private val viewModel: PlanifierVisioModelView by activityViewModels()
+    private val viewModel: PlanifierSuiviViewModel by activityViewModels()
 
-    private var _binding: DialogPlanifierDateBinding? = null
+    private var _binding: DialogPlanifierDateSuiviBinding? = null
     private val binding get() = _binding
 
     @Inject
@@ -47,9 +44,9 @@ class PickDateFragment : Fragment() {
         val today = Calendar.getInstance()
         datePicker1.minDate = System.currentTimeMillis()
         datePicker1.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
-                today.get(Calendar.DAY_OF_MONTH)
+            today.get(Calendar.DAY_OF_MONTH)
         ) { view, year, month, day ->
-           viewModel.date.postValue("$year/$month/$day")
+            viewModel.date.postValue("$year/$month/$day")
 
         }
 

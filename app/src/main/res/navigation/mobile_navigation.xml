@@ -68,5 +68,38 @@
         <action
             android:id="@+id/action_videoVisioFragment_to_planifierVisioDialogFragment"
             app:destination="@id/planifierVisioDialogFragment" />
+        <action
+            android:id="@+id/action_videoVisioFragment_to_confirmerReparationDialog"
+            app:destination="@id/confirmerReparationDialog" />
+        <action
+            android:id="@+id/action_videoVisioFragment_to_planifierSuiviDialogFragment"
+            app:destination="@id/planifierSuiviDialogFragment" />
+        <action
+            android:id="@+id/action_videoVisioFragment_to_demandeAcquisitionDialog"
+            app:destination="@id/demandeAcquisitionDialog" />
     </fragment>
+    <action
+        android:id="@+id/action_global_videoVisioFragment"
+        app:destination="@id/videoVisioFragment"
+        app:popUpTo="@id/mobile_navigation" />
+    <dialog
+        android:id="@+id/confirmerReparationDialog"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.main.ConfirmerReparationDialog"
+        android:label="ConfirmerReparationDialog" >
+        <action
+            android:id="@+id/action_confirmerReparationDialog_to_videoVisioFragment"
+            app:destination="@id/videoVisioFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/planifierSuiviDialogFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.PlanifierSuiviDialogFragment"
+        android:label="PlanifierSuiviDialogFragment" />
+    <dialog
+        android:id="@+id/demandeAcquisitionDialog"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.DemandeAcquisitionDialog"
+        android:label="DemandeAcquisitionDialog" >
+        <action
+            android:id="@+id/action_demandeAcquisitionDialog_to_videoVisioFragment"
+            app:destination="@id/videoVisioFragment" />
+    </dialog>
 </navigation>
