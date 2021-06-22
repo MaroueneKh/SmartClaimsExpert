@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
@@ -30,6 +33,8 @@ class PlanifierSuiviDialogFragment : DialogFragment() {
 
     @Inject
     lateinit var logger: Logger
+
+    private lateinit var navDirections: NavDirections
 
     private lateinit var viewPager: ViewPager2
 
@@ -56,7 +61,12 @@ class PlanifierSuiviDialogFragment : DialogFragment() {
                     viewPager.currentItem = viewPager.currentItem + 1
 
                 }
-                2-> dismiss()
+                2-> {
+                    val bundle = bundleOf("id" to arguments?.get("id").toString())
+                    setNavDirectionsTo(bundle)
+                    val navController = findNavController()
+                    navController.navigate(navDirections)
+                }
 
             }
 
@@ -65,6 +75,20 @@ class PlanifierSuiviDialogFragment : DialogFragment() {
             dismiss()
         })
         return myview
+    }
+    fun setNavDirectionsTo(bundle: Bundle) {
+
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+
+            override fun getActionId(): Int {
+                return R.id.action_planifierSuiviDialogFragment_to_videoVisioFragment
+            }
+        }
+
+
     }
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = NUM_PAGES

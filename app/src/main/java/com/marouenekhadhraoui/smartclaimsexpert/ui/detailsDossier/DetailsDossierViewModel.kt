@@ -6,6 +6,7 @@ import androidx.lifecycle.*
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.data.local.Datapreferences
 import com.marouenekhadhraoui.smartclaimsexpert.network.NetworkHelper
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierRepository
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
@@ -33,6 +34,8 @@ class DetailsDossierViewModel @Inject constructor(
 
     var listHistorique: List<DossierModel> = emptyList()
 
+    var listSuivis: List<SuiviModel> = emptyList()
+
 
     private val _dossier = MutableStateFlow(Resource.loading(
             data = listHistorique,
@@ -40,6 +43,17 @@ class DetailsDossierViewModel @Inject constructor(
 
     // public
     val dossier: StateFlow<Resource<List<DossierModel>>> = _dossier
+
+
+
+    private val _suivi = MutableStateFlow(Resource.loading(
+        data = listSuivis,
+    ))
+
+    // public
+    val suivi: StateFlow<Resource<List<SuiviModel>>> = _suivi
+
+
     private val _pressBtnPlanifierEvent = MutableLiveData<Event<Unit>>()
     val pressBtnPlanifierEvent: LiveData<Event<Unit>> = _pressBtnPlanifierEvent
 
@@ -69,7 +83,9 @@ class DetailsDossierViewModel @Inject constructor(
                             message = exception.message ?: otherErr
                     )
                 }
+
             }
+
         }
 
 
@@ -77,6 +93,32 @@ class DetailsDossierViewModel @Inject constructor(
     fun pressButtonPlanifier()
     {
         _pressBtnPlanifierEvent.value = Event(Unit)
+
+    }
+    fun getSuivi(idDossier:Int)
+    {
+        if (networkHelper.isNetworkConnected()) {
+            viewModelScope.launch {
+                try {
+
+                    logger.log("try")
+                    apprefs.token.collect { token ->
+                        _suivi.value = Resource.success(
+                            data = dossierRepository.getSuivi(idDossier)
+                        )
+                    }
+
+                } catch (exception: Exception) {
+                    logger.log("catch")
+                    logger.log(exception.message.toString())
+                    _suivi.value = Resource.error(
+                        data = null,
+                        message = exception.message ?: otherErr
+                    )
+                }
+            }
+        }
+
 
     }
 

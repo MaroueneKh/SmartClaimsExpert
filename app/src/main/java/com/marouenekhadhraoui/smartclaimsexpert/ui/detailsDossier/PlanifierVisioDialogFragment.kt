@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
 import androidx.fragment.app.*
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
@@ -24,6 +27,7 @@ private const val NUM_PAGES = 3
 class PlanifierVisioDialogFragment : DialogFragment() {
 
 
+    private lateinit var navDirections: NavDirections
     private val viewModel: PlanifierVisioModelView by activityViewModels()
 
     @Inject
@@ -52,7 +56,12 @@ class PlanifierVisioDialogFragment : DialogFragment() {
                    viewPager.currentItem = viewPager.currentItem + 1
 
                }
-               2-> dismiss()
+               2-> {
+                   val bundle = bundleOf("id" to arguments?.get("id").toString())
+                   setNavDirectionsTo(bundle)
+                   val navController = findNavController()
+                   navController.navigate(navDirections)
+               }
 
            }
 
@@ -61,6 +70,20 @@ class PlanifierVisioDialogFragment : DialogFragment() {
               dismiss()
         })
         return myview
+    }
+    fun setNavDirectionsTo(bundle: Bundle) {
+
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+
+            override fun getActionId(): Int {
+                return R.id.action_planifierVisioDialogFragment_to_videoVisioFragment
+            }
+        }
+
+
     }
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = NUM_PAGES

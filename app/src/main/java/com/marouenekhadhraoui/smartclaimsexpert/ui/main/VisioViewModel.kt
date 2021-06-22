@@ -116,6 +116,27 @@ class VisioViewModel @Inject constructor(
         }
 
     }
+    fun callAssure(idAssure:Int)
+    {
+        if (networkHelper.isNetworkConnected()) {
+            viewModelScope.launch {
+                try {
+                    _suivi.value = Resource.success(
+                        data = visioRepository.callAssure(idAssure)
+                    )
+
+                } catch (exception: Exception) {
+                    logger.log("catch")
+                    logger.log(exception.message.toString())
+                    _visio.value = Resource.error(
+                        data = null,
+                        message = exception.message ?: otherErr
+                    )
+                }
+            }
+        }
+
+    }
 
 
 

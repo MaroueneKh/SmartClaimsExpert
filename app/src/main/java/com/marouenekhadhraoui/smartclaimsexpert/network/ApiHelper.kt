@@ -19,4 +19,5 @@ interface ApiHelper {
     suspend fun ajouterSuivi(idDossier:Int,idAssure: Int,idExpert:Int,date:String,time:String,effectue:Int): List<SuiviModel>
     suspend fun getSuivi(idDossier:Int): List<SuiviModel>
     suspend fun modifierSuivi(idDossier:Int,effectue: Int,resultat:String) : List<SuiviModel>
+    suspend fun callAssure(idAssure:Int) : List<SuiviModel>
 }

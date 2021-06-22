@@ -15,7 +15,7 @@
     <string name="Envoyer">Envoyer</string>
     <string name="Type">Type de l\'accident</string>
     <string name="TypeExpertise">Type de l\'expertise</string>
-    <string name="FeuReparation">Donner le feu pour la réparation</string>
+    <string name="FeuReparation">Autoriserla réparation</string>
     <string name="Collision">Collision</string>
     <string name="Filtre">Filtre</string>
     <string name="Tri">Tri</string>
@@ -25,10 +25,12 @@
     <string name="CommencerSuivi">Commencer la visio suivi</string>
     <string name="Lieu">Lieu de l\'accident</string>
     <string name="Scan">Scan des documents</string>
-    <string name="Video">Video de l\'accident</string>
+    <string name="Facture">Facture</string>
+    <string name="Video">Video de l\'expertise</string>
     <string name="Suivi">Video du suivi</string>
     <string name="Rapport">Rapport de l\'expertise</string>
     <string name="Photos">Veuillez choisir un rendez vous pour la visio expertise</string>
+    <string name="Degats">Images du dégat</string>
     <string name="NbDossiers">Nombre de dossiers</string>
     <string name="Compagnie">Compagnie d\'assurance</string>
     <string name="Planifier">Planifier la vidéo expertise</string>

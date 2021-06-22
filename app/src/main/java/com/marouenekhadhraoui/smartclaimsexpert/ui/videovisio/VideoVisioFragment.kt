@@ -178,6 +178,7 @@ class VideoVisioFragment : Fragment() {
                                                                 jz_video.visible()
                                                                 txt_videoSuivi.visible()
                                                                 jz_videoSuivi.visible()
+                                                                card.visible()
                                                                 textVideo.invisible()
                                                                 btnVisio.text = getString(R.string.CommencerSuivi)
                                                                 txt_facture.visible()

@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_planifierVisioDialogFragment_to_planifierVisioDialogTimeFragment"
             app:destination="@id/planifierVisioDialogTimeFragment" />
+        <action
+            android:id="@+id/action_planifierVisioDialogFragment_to_videoVisioFragment"
+            app:destination="@id/videoVisioFragment" />
     </dialog>
     <dialog
         android:id="@+id/planifierVisioDialogTimeFragment"
@@ -93,7 +96,11 @@
     <dialog
         android:id="@+id/planifierSuiviDialogFragment"
         android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.PlanifierSuiviDialogFragment"
-        android:label="PlanifierSuiviDialogFragment" />
+        android:label="PlanifierSuiviDialogFragment" >
+        <action
+            android:id="@+id/action_planifierSuiviDialogFragment_to_videoVisioFragment"
+            app:destination="@id/videoVisioFragment" />
+    </dialog>
     <dialog
         android:id="@+id/demandeAcquisitionDialog"
         android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.DemandeAcquisitionDialog"

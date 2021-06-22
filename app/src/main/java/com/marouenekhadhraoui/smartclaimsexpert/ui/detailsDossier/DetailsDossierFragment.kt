@@ -35,6 +35,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Status
 import com.marouenekhadhraoui.smartclaimsexpert.utils.internetErr
 import com.marouenekhadhraoui.smartclaimsexpert.utils.invisible
+import com.marouenekhadhraoui.smartclaimsexpert.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_details_dossier.*
 import kotlinx.coroutines.flow.collect
@@ -60,7 +61,8 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
     private lateinit var location: Location
     private lateinit  var uriVideo: Uri
 
-
+    val storage = Firebase.storage
+    val storageRef = storage.reference
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -80,6 +82,8 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
         observeDossiers()
         observeButton()
         observeImage()
+        viewModel.getSuivi(arguments?.get("id").toString().toInt())
+        observeFacture()
 
     }
     fun bindViewModel() {
@@ -136,8 +140,7 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
     {
         logger.log("id")
         logger.log(id)
-        val storage = Firebase.storage
-        val storageRef = storage.reference
+
         val scan1ref = storageRef.child("$id/images/scan1.jpg")
         val scan2ref = storageRef.child("$id/images/scan2.jpg")
         val vid1ref = storageRef.child("$id/videos/vid1.mp4")
@@ -237,6 +240,55 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
 
         })
     }
+    fun observeFacture()
+    {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.suivi.collect {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        logger.log("success")
+                        if (it.data!!.isEmpty()) {
+                            logger.log("no suivi")
+                        } else {
+                            if (it.data!![0].resultat.equals("Facture Envoye"))
+                                img_facture.visible()
+                                txt_facture.visible()
+                                ProgressFacture.visible()
+                         val  id:String = arguments?.get("id").toString()
+
+                            val facture = storageRef.child("$id/images/facture.png")
+                            facture.downloadUrl.addOnSuccessListener { url ->
+                                factur_png.visible()
+                                factur_png.load(url)
+                                ProgressFacture.invisible()
+                              //  ProgressBarscan1.invisible()
+                            }.addOnFailureListener {
+                                logger.log(it.message.toString())
+                                // Handle any errors
+                            }
+
+
+
+                        }
+                    }
+                    Status.LOADING -> {
+                        logger.log("loading")
+                    }
+                    Status.ERROR -> {
+                        logger.log("error")
+                        if (it.message.equals(internetErr)) {
+                            logger.log("internet error")
+                            //  Snackbar.make(findViewById(R.id.constraint), "Verifier votre connexion", Snackbar.LENGTH_LONG).show()
+                        }
+
+                    }
+                }
+            }
+        }
+
+
+    }
+
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap

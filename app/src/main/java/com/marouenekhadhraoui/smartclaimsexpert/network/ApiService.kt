@@ -60,6 +60,10 @@ interface ApiService {
         @Query(value = "effectue") effectue: Int,
         @Query(value = "resultat") resultat: String
     ): List<SuiviModel>
+    @POST("api/callAssure")
+    suspend fun callAssure(
+        @Query(value = "idAssure") idDossier: Int,
+    ): List<SuiviModel>
 
 
 

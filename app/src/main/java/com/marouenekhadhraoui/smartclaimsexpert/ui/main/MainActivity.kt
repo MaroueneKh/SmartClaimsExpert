@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             logger.log("navigationTO")
             findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_videoVisioFragment)
         }
-
+        else
         navView.setupWithNavController(navController)
 
     }

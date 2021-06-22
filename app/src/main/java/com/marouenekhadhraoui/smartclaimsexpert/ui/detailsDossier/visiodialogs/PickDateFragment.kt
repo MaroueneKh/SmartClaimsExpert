@@ -36,7 +36,7 @@ class PickDateFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.dialog_planifier_date_suivi, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.dialog_planifier_date, container, false)
         binding?.lifecycleOwner = this
 
         return binding?.root

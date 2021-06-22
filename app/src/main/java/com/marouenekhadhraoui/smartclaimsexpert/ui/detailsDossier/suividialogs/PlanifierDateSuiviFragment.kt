@@ -42,6 +42,7 @@ class PlanifierDateSuiviFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val today = Calendar.getInstance()
+        datePicker1
         datePicker1.minDate = System.currentTimeMillis()
         datePicker1.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
             today.get(Calendar.DAY_OF_MONTH)

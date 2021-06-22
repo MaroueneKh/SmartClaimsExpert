@@ -100,7 +100,7 @@ class VisioActivity : AppCompatActivity()  {
             )
         call_button.setOnClickListener {
             rtcClient.call(sdpObserver)
-
+            viewModel.callAssure(1)
         }
         cancel_button.setOnClickListener {
             //
