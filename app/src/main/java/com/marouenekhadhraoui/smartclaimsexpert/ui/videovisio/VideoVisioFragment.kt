@@ -184,7 +184,16 @@ class VideoVisioFragment : Fragment() {
                                                                 txt_facture.visible()
                                                                 img_facture.visible()
                                                                 textFactureSmart.visible()
+                                                                img_facture.setOnClickListener(View.OnClickListener {
+                                                                    val bundle = bundleOf("id" to arguments?.get("id").toString())
+                                                                    setNavDirectionsToFacture(bundle)
+                                                                    val navController = findNavController()
+                                                                    navController.navigate(navDirections)
+
+
+                                                                })
                                                                 binding?.btnValider?.setOnClickListener(View.OnClickListener {
+
 
 
                                                                 })
@@ -297,6 +306,21 @@ class VideoVisioFragment : Fragment() {
 
 
     }
+    fun setNavDirectionsToFacture(bundle: Bundle) {
+
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+
+            override fun getActionId(): Int {
+                return R.id.action_videoVisioFragment_to_formOneExpert
+            }
+        }
+
+
+    }
+
     fun setNavDirectionsToAcquisition(bundle: Bundle) {
 
         navDirections = object : NavDirections {

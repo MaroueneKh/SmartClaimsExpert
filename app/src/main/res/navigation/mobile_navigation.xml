@@ -80,6 +80,14 @@
         <action
             android:id="@+id/action_videoVisioFragment_to_demandeAcquisitionDialog"
             app:destination="@id/demandeAcquisitionDialog" />
+        <action
+            android:id="@+id/action_videoVisioFragment_to_rapportExpertFragment"
+            app:destination="@id/rapportExpertFragment" />
+        <action
+            android:id="@+id/action_videoVisioFragment_to_formOneExpert"
+            app:destination="@id/formOneExpert"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <action
         android:id="@+id/action_global_videoVisioFragment"
@@ -109,4 +117,44 @@
             android:id="@+id/action_demandeAcquisitionDialog_to_videoVisioFragment"
             app:destination="@id/videoVisioFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/rapportExpertFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.RapportExpertFragment"
+        android:label="RapportExpertFragment" />
+    <fragment
+        android:id="@+id/formOneExpert"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormOneExpert"
+        android:label="FormOneExpert" >
+        <action
+            android:id="@+id/action_formOneExpert_to_formTwoExpert"
+            app:destination="@id/formTwoExpert"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/formTwoExpert"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormTwoExpert"
+        android:label="FormTwoExpert" >
+        <action
+            android:id="@+id/action_formTwoExpert_to_formThreeExpert"
+            app:destination="@id/formThreeExpert"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/formThreeExpert"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormThreeExpert"
+        android:label="FormThreeExpert" >
+        <action
+            android:id="@+id/action_formThreeExpert_to_formFourExpert"
+            app:destination="@id/formFourExpert"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popUpTo="com.android.tools.property.panel.api.EnumValue$Companion$LOADING$1@c1186df" />
+    </fragment>
+    <fragment
+        android:id="@+id/formFourExpert"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormFourExpert"
+        android:label="FormFourExpert" />
 </navigation>
