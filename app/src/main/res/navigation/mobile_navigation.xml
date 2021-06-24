@@ -129,8 +129,7 @@
             android:id="@+id/action_formOneExpert_to_formTwoExpert"
             app:destination="@id/formTwoExpert"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left" />
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/formTwoExpert"
@@ -150,8 +149,7 @@
             android:id="@+id/action_formThreeExpert_to_formFourExpert"
             app:destination="@id/formFourExpert"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popUpTo="com.android.tools.property.panel.api.EnumValue$Companion$LOADING$1@c1186df" />
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/formFourExpert"

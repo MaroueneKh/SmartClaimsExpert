@@ -5,6 +5,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.RapportModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.signin.ExpertModel
 
 import javax.inject.Inject
@@ -21,6 +22,7 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : Ap
     override suspend fun getSuivi(idDossier: Int): List<SuiviModel> = apiService.getSuivi(idDossier)
     override suspend fun modifierSuivi(idDossier: Int, effectue: Int,resultat:String):List<SuiviModel> = apiService.modifierSuivi(idDossier,effectue,resultat)
    override suspend fun callAssure(idAssure:Int) : List<SuiviModel> = apiService.callAssure(idAssure)
+    override suspend fun ajouterRapport(idAssure: Int, rapportModel: RapportModel): List<RapportModel>  = apiService.AjouterRapport(idAssure,rapportModel)
 }
 
 

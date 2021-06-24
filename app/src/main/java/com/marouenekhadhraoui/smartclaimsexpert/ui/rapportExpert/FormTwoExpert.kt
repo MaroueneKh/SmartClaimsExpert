@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.dialog_planifier_date.*
 import kotlinx.android.synthetic.main.form_one_expert.*
 import kotlinx.android.synthetic.main.form_one_expert.edittext
 import kotlinx.android.synthetic.main.form_two_expert.*
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -50,6 +51,7 @@ class FormTwoExpert : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initalizeForm()
         suivantTwo.setOnClickListener {
             if (!CheckForm())
             {
@@ -142,6 +144,13 @@ class FormTwoExpert : Fragment() {
             }
         }
 
+
+    }
+    fun initalizeForm()
+    {
+        dateEditText.setText("12/05/2021")
+        assureTextField.setText("1")
+        dossierTextField.setText("51")
 
     }
 

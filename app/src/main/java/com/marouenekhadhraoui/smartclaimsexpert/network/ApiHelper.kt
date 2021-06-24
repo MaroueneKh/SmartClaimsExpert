@@ -5,6 +5,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.RapportModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.signin.ExpertModel
 
 
@@ -20,4 +21,5 @@ interface ApiHelper {
     suspend fun getSuivi(idDossier:Int): List<SuiviModel>
     suspend fun modifierSuivi(idDossier:Int,effectue: Int,resultat:String) : List<SuiviModel>
     suspend fun callAssure(idAssure:Int) : List<SuiviModel>
+    suspend fun ajouterRapport(idAssure:Int,rapportModel: RapportModel) : List<RapportModel>
 }

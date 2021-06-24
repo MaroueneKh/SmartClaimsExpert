@@ -4,7 +4,9 @@ import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.detailsBottomSheet.DetailAssureModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.RapportModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.signin.ExpertModel
+import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -64,6 +66,11 @@ interface ApiService {
     suspend fun callAssure(
         @Query(value = "idAssure") idDossier: Int,
     ): List<SuiviModel>
+    @POST("api/ajouterRapport")
+    suspend fun AjouterRapport(
+        @Query(value = "idAssure") idDossier: Int,
+        @Body rapport: RapportModel,
+    ): List<RapportModel>
 
 
 

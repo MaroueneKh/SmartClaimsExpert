@@ -1,5 +1,6 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert
 
+import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -17,6 +18,8 @@ import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.FormOneExpertBinding
 import kotlinx.android.synthetic.main.form_one_expert.*
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class FormOneExpert : Fragment() {
@@ -30,6 +33,7 @@ class FormOneExpert : Fragment() {
     private lateinit var navDirections: NavDirections
     @Inject
     lateinit var logger: Logger
+    lateinit var datepicker:DatePickerDialog
 
 
     override fun onCreateView(
@@ -43,10 +47,25 @@ class FormOneExpert : Fragment() {
         return binding?.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindViewModel()
+        initalizeForm()
+        missionTextField.setEndIconActivated(true)
+        val cal = Calendar.getInstance()
+        val y = cal.get(Calendar.YEAR)
+        val m = cal.get(Calendar.MONTH)
+        val d = cal.get(Calendar.DAY_OF_MONTH)
+
+        missionTextField.setEndIconOnClickListener {
+            // do some code
+            DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
+                // Display Selected date in textbox
+                dateTextfield.setText(dayOfMonth.toString() + "/ " + monthOfYear + "/" + year)
+            }, y, m, d).show()
+        }
+
         suivant.setOnClickListener {
             if (!CheckForm())
             {
@@ -122,6 +141,17 @@ class FormOneExpert : Fragment() {
             }
         }
 
+
+    }
+    fun initalizeForm()
+    {
+        edittext.setText("Marouene Khadhraoui")
+        expertEditText.setText("Malek Ben Marzouk")
+
+        val date = Calendar.getInstance().time
+        val formatter = SimpleDateFormat.getDateInstance() //or use getDateInstance()
+        val formatedDate = formatter.format(date)
+        refTextField.setText(formatedDate.toString())
 
     }
 

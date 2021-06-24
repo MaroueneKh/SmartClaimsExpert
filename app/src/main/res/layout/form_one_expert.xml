@@ -23,6 +23,26 @@
     android:layout_height="match_parent"
     >
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/degatsText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_horizontal"
+        android:maxLines="2"
+        android:text="@string/Rapport"
+        android:textAlignment="center"
+        app:fontFamily="@font/roboto_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat3"
         android:layout_width="0dp"
@@ -37,14 +57,16 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/degatsText">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:errorEnabled="true"
-            android:layout_weight="4">
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:errorEnabled="true">
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/nomText"
                 android:layout_width="wrap_content"
@@ -55,18 +77,20 @@
                 app:fontFamily="@font/roboto_bold" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:errorEnabled="true"
-            android:layout_weight="6">
+            android:layout_weight="6"
+            android:orientation="horizontal"
+            app:errorEnabled="true">
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nomTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
                 >
 
@@ -74,19 +98,16 @@
                     android:id="@+id/edittext"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@={viewModel.nom}"
                     android:backgroundTint="?attr/colorSecondary"
                     android:focusable="auto"
                     android:inputType="text"
                     android:nestedScrollingEnabled="true"
-                    />
+                    android:text="@={viewModel.nom}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
-
-
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -111,6 +132,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -174,6 +196,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -238,6 +261,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -264,6 +288,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconCheckable="true"
+                app:endIconTint="@color/mainblue"
+                app:endIconDrawable="@drawable/ic_calendar_foreground"
 
                 >
 
@@ -304,6 +332,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -370,6 +399,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -436,6 +466,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
