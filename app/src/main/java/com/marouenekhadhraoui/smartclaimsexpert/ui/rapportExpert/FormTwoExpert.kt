@@ -1,5 +1,6 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert
 
+import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -52,6 +53,17 @@ class FormTwoExpert : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initalizeForm()
+        val cal = Calendar.getInstance()
+        val y = cal.get(Calendar.YEAR)
+        val m = cal.get(Calendar.MONTH)
+        val d = cal.get(Calendar.DAY_OF_MONTH)
+        accidentTextField.setEndIconOnClickListener {
+
+            DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
+                dateEditText.setText(dayOfMonth.toString() + "/ " + monthOfYear + "/" + year)
+            }, y, m, d).show()
+        }
+        viewModelFour.dateAccident.value = "15/05/2021"
         suivantTwo.setOnClickListener {
             if (!CheckForm())
             {
@@ -63,8 +75,9 @@ class FormTwoExpert : Fragment() {
                 viewModelFour.nDossier.value = dossierTextField.text.toString()
                 viewModelFour.tiers.value = tierTextField.text.toString()
                 viewModelFour.veh.value = vehTextField.text.toString()
-                viewModelFour.cont.value = dosTextField.text.toString()
+                viewModelFour.cont.value = contTextField.text.toString()
                 viewModelFour.cie.value = cieTextField.text.toString()
+                viewModelFour.dos.value = dosTextField.text.toString()
 
                 val bundle = bundleOf("id" to arguments?.get("id").toString())
                 setNavDirectionsTo(bundle)
@@ -148,10 +161,7 @@ class FormTwoExpert : Fragment() {
     }
     fun initalizeForm()
     {
-        dateEditText.setText("12/05/2021")
-        assureTextField.setText("1")
-        dossierTextField.setText("51")
-
+        viewModelFour.nDossier.value = arguments?.get("id").toString()
     }
 
 

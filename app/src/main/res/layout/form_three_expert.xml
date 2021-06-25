@@ -11,1107 +11,1138 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormOneViewModel"
+            type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormFourViewModel"
             />
     </data>
-    <androidx.core.widget.NestedScrollView
-        android:fillViewport="true"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
+            android:fillViewport="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/degatsText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center_horizontal"
-                android:maxLines="2"
-                android:text="@string/Rapport"
-                android:textAlignment="center"
-                app:fontFamily="@font/roboto_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/degatsText">
-
-                <LinearLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/degatsText"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="@string/Rapport"
+                    android:textAlignment="center"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    app:errorEnabled="true">
+                    android:weightSum="10"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/degatsText">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/nomText"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        app:errorEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/nomText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/DateExamen"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/DateExamen"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
 
-                </LinearLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/examTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="true"
+                            app:endIconMode="custom"
+                            app:endIconCheckable="true"
+                            app:endIconTint="@color/mainblue"
+                            app:endIconDrawable="@drawable/ic_date_picker"
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/dateexamtext"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="?attr/colorSecondary"
+                                android:focusable="auto"
+                                android:inputType="date"
+                                android:nestedScrollingEnabled="true"
+                                android:text="@={viewModel.dateexam}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:orientation="horizontal"
-                    app:errorEnabled="true">
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nomTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        >
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/expertText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/VehExp"
+                            app:fontFamily="@font/roboto_bold" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/dateexamtext"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="?attr/colorSecondary"
-                            android:focusable="auto"
-                            android:inputType="date"
-                            android:nestedScrollingEnabled="true"
-                            android:text="@={viewModel.nom}" />
+                    </LinearLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/expertText"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/VehExp"
-                        app:fontFamily="@font/roboto_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:orientation="horizontal">
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/expertTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/vehexpEditText"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/expertTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:text="@={viewModel.expert}"
-                            android:focusable="auto"
-                            />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
+                            >
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/vehexpEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:text="@={viewModel.vehexp}"
+                                android:focusable="auto"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat5"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/refText"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/refText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Lieu2"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Lieu2"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/lieuTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@={viewModel.reference}"
-                            android:inputType="text"
-                            android:focusable="auto"
-                            />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/lieuTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@={viewModel.lieu}"
+                                android:inputType="text"
+                                android:focusable="auto"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat5">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat6"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat5">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/missionText"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/missionText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Observation"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Observation"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/missionTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/obsTextfield"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/missionTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:text="@={viewModel.dateMission}"
-                            android:focusable="auto"
-                            />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/obsTextfield"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:text="@={viewModel.obs}"
+                                android:focusable="auto"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat7"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/marqueText"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/marqueText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Marque"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Marque"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <com.google.android.material.textfield.TextInputLayout
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/marqueTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:lines="1"
-                            android:text="@={viewModel.addresse}"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/marqueTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lines="1"
+                                android:text="@={viewModel.marque}"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                        <androidx.appcompat.widget.AppCompatTextView
 
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Type2"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Type2"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/aadresseTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/typeTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/aadresseTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:lines="1"
-                            android:text="@={viewModel.addresse}"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/typeTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lines="1"
+                                android:text="@={viewModel.type}"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat7">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat8"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat7">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/telText"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/telText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Puiss"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Puiss"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <com.google.android.material.textfield.TextInputLayout
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/puissTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:text="@={viewModel.tel}"
-                            android:focusable="auto"
-                            />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                            >
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/indexText"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/puissTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:text="@={viewModel.puiss}"
+                                android:focusable="auto"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/indexText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Index"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Index"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
 
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/indexTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:text="@={viewModel.tel}"
-                            android:focusable="auto"
-                            />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
 
-                </LinearLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/indexTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:text="@={viewModel.indicek}"
+                                android:focusable="auto"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
 
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat8">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat9"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat8">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/faxText"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/faxText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Genre"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Genre"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/faxTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/genreTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/faxTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/genreTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.genre}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/couleurText"
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/couleurText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Couleur"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Couleur"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
 
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/couleurTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/couleurTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.couleur}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat11"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat9">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat11"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat9">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/vehTiers"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/vehTiers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/etat"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/etat"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/vehField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/vehTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/vehField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/vehTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.etatveh}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/immob"
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/immob"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Immob"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Immob"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/immobTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/immobTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.immob}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat11">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat12"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat11">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/Cont"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/Cont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Chassis"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Chassis"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/contField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/chassisTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/contField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="number"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/chassisTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="number"
+                                android:text="@={viewModel.chassis}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                        <androidx.appcompat.widget.AppCompatTextView
 
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/date1er"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/date1er"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/mcTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconMode="custom"
+                            app:endIconCheckable="true"
+                            app:endIconTint="@color/mainblue"
+                            app:endIconDrawable="@drawable/ic_date_picker"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mcTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.mc}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat13">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat13">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/Dos"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/Dos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/VN"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/VN"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/dosField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/vnTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/dosField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/vnTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.vn}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                        <androidx.appcompat.widget.AppCompatTextView
 
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/VV"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/VV"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.5"
-                    android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout
 
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/VVTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/VVTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.vv}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat12">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat13"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat12">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/Adverse"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/Adverse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:maxLines="2"
+                            android:text="@string/Circonstance"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:maxLines="2"
-                        android:text="@string/Circonstance"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/cieField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/circonstanceTextField"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/cieField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:text="@={viewModel.fax}" />
+                            app:errorEnabled="true"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            >
 
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/circonstanceTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:text="@={viewModel.circonstance}" />
 
-                </LinearLayout>
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
-                android:layout_marginBottom="24dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_cancel"
-                android:text="@string/Cancel"
-                android:textColor="@color/mainblue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/suivantTwo"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/suivantThree"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginBottom="24dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_se_connecter"
-                android:text="@string/Suivant"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cancel" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
+                    </LinearLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_cancel"
+            android:text="@string/Cancel"
+            android:textColor="@color/mainblue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/suivantThree"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/suivantThree"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_se_connecter"
+            android:text="@string/Suivant"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cancel" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

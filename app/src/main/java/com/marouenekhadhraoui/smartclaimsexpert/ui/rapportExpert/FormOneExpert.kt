@@ -1,4 +1,4 @@
-package com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert
+    package com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert
 
 import android.app.DatePickerDialog
 import android.os.Build
@@ -17,15 +17,16 @@ import androidx.navigation.fragment.findNavController
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.FormOneExpertBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.form_one_expert.*
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FormOneExpert : Fragment() {
 
 
-    private val viewModel: FormOneViewModel by activityViewModels()
     private val viewModelFour: FormFourViewModel by activityViewModels()
     private var _binding: FormOneExpertBinding? = null
     private val binding get() = _binding
@@ -33,7 +34,6 @@ class FormOneExpert : Fragment() {
     private lateinit var navDirections: NavDirections
     @Inject
     lateinit var logger: Logger
-    lateinit var datepicker:DatePickerDialog
 
 
     override fun onCreateView(
@@ -70,12 +70,13 @@ class FormOneExpert : Fragment() {
             if (!CheckForm())
             {
                 viewModelFour.nom.value = edittext.text.toString()
-                viewModelFour.expert.value = edittext.text.toString()
-                viewModelFour.reference.value = edittext.text.toString()
-                viewModelFour.dateMission.value = edittext.text.toString()
-                viewModelFour.addresse.value = edittext.text.toString()
-                viewModelFour.tel.value = edittext.text.toString()
-                viewModelFour.fax.value = edittext.text.toString()
+                viewModelFour.expert.value = expertEditText.text.toString()
+                viewModelFour.reference.value = refTextField.text.toString()
+                viewModelFour.dateMission.value = dateTextfield.text.toString()
+                viewModelFour.addresse.value = addresseTextField.text.toString()
+                viewModelFour.tel.value = telTextField.text.toString()
+                viewModelFour.fax.value = facTextField.text.toString()
+
                 val bundle = bundleOf("id" to arguments?.get("id").toString())
                 setNavDirectionsTo(bundle)
                 val navController = findNavController()
@@ -87,7 +88,7 @@ class FormOneExpert : Fragment() {
 
     }
     fun bindViewModel() {
-        binding?.viewModel = viewModel
+        binding?.viewModel = viewModelFour
     }
      fun CheckForm(): Boolean {
         var empty: Boolean = false
@@ -145,13 +146,13 @@ class FormOneExpert : Fragment() {
     }
     fun initalizeForm()
     {
-        edittext.setText("Marouene Khadhraoui")
-        expertEditText.setText("Malek Ben Marzouk")
-
+        viewModelFour.nom.value = "Marouene Khadhraoui"
+        viewModelFour.expert.value = "Malek Ben Marzouk"
         val date = Calendar.getInstance().time
         val formatter = SimpleDateFormat.getDateInstance() //or use getDateInstance()
         val formatedDate = formatter.format(date)
         refTextField.setText(formatedDate.toString())
+        viewModelFour.dateMission.value = formatedDate.toString()
 
     }
 

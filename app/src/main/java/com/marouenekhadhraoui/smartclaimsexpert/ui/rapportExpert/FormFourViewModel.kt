@@ -83,6 +83,7 @@ class FormFourViewModel @Inject constructor(
     var nature = MutableLiveData<String>()
 
     var list: List<RapportModel> = emptyList()
+    lateinit var rapportTest:RapportModel
 
     private val _rapport = MutableStateFlow(Resource.loading(
         data = list,
@@ -108,7 +109,7 @@ fun ajouterRapport(idDossier:Int)
                                         cie.value!!,dateexam.value!!,vehexp.value!!,lieu.value!!,obs.value!!,marque.value!!,type.value!!,puiss.value!!,indicek.value!!,genre.value!!,
                                 couleur.value!!,etatveh.value!!,immob.value!!,chassis.value!!,mc.value!!,circonstance.value!!,vn.value!!,vv.value!!,accord.value!!,impact.value!!,
                                 fourniture1.value!!,fourniture2.value!!,fourniture3.value!!,montant1.value!!,montant2.value!!,montant3.value!!,v1.value!!,v2.value!!,v3.value!!,nature.value!!)
-                        )
+                       )
                     )
                 }
 

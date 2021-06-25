@@ -11,7 +11,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormOneViewModel"
+            type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormFourViewModel"
             />
     </data>
     <androidx.core.widget.NestedScrollView
@@ -91,7 +91,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
-
+                        app:endIconCheckable="true"
+                        app:endIconMode="clear_text"
                         >
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -102,7 +103,7 @@
                             android:focusable="auto"
                             android:inputType="text"
                             android:nestedScrollingEnabled="true"
-                            android:text="@={viewModel.nom}" />
+                            android:text="@={viewModel.accord}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +113,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3.33"
-                    android:gravity="end"
+                    android:gravity="center"
                     app:errorEnabled="true">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -376,7 +377,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat6"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
+                        android:layout_height="60dp"
                         android:orientation="horizontal"
                         android:weightSum="10"
                         app:errorEnabled="true"
@@ -394,9 +395,10 @@
 
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -407,7 +409,7 @@
                                     android:focusable="auto"
                                     android:inputType="text"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.fourniture1}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -437,7 +439,7 @@
                                     android:focusable="auto"
                                     android:inputType="number"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.montant1}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -456,7 +458,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -467,7 +470,7 @@
                                     android:focusable="auto"
                                     android:inputType="number"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.v1}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -480,7 +483,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat7"
                         android:layout_width="0dp"
-                        android:layout_height="36dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="8dp"
                         android:orientation="horizontal"
                         android:weightSum="10"
@@ -501,7 +504,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -512,7 +516,7 @@
                                     android:focusable="auto"
                                     android:inputType="text"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.fourniture2}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -531,7 +535,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -542,7 +547,7 @@
                                     android:focusable="auto"
                                     android:inputType="number"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.montant2}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -561,7 +566,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -572,7 +578,7 @@
                                     android:focusable="auto"
                                     android:inputType="number"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.v2}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -584,7 +590,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat8"
                         android:layout_width="0dp"
-                        android:layout_height="36dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:weightSum="10"
@@ -605,7 +611,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -616,7 +623,7 @@
                                     android:focusable="auto"
                                     android:inputType="text"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.fourniture3}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -635,7 +642,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -646,7 +654,7 @@
                                     android:focusable="auto"
                                     android:inputType="number"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.montant3}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -665,7 +673,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:errorEnabled="true"
-
+                                app:endIconCheckable="true"
+                                app:endIconMode="clear_text"
                                 >
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -676,7 +685,7 @@
                                     android:focusable="auto"
                                     android:inputType="number"
                                     android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
+                                    android:text="@={viewModel.v3}" />
 
                             </com.google.android.material.textfield.TextInputLayout>
 
@@ -689,7 +698,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat10"
                         android:layout_width="0dp"
-                        android:layout_height="36dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:weightSum="10"
@@ -793,7 +802,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat9"
                         android:layout_width="0dp"
-                        android:layout_height="36dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:weightSum="10"
@@ -897,7 +906,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat11"
                         android:layout_width="0dp"
-                        android:layout_height="36dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:weightSum="10"
@@ -1052,6 +1061,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
+                        app:endIconCheckable="true"
+                        app:endIconMode="clear_text"
 
                         >
 
@@ -1063,7 +1074,7 @@
                             android:focusable="auto"
                             android:inputType="text"
                             android:nestedScrollingEnabled="true"
-                            android:text="@={viewModel.nom}" />
+                            android:text="@={viewModel.nature}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -1092,7 +1103,7 @@
                 android:text="@string/Cancel"
                 android:textColor="@color/mainblue"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/suivant"
+                app:layout_constraintEnd_toStartOf="@+id/valider"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton

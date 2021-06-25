@@ -76,11 +76,14 @@ class FormFourExpert : Fragment() {
                 viewModel.fourniture2.value = designation2.text.toString()
                 viewModel.fourniture3.value = designation3.text.toString()
                 viewModel.montant1.value = montant.text.toString()
-                viewModel.montant2.value = montant.text.toString()
-                viewModel.montant3.value = montant.text.toString()
+                viewModel.montant2.value = montant2.text.toString()
+                viewModel.montant3.value = montant3.text.toString()
                 viewModel.v1.value = v.text.toString()
                 viewModel.v2.value = v2.text.toString()
-                viewModel.v3.value = v2.text.toString()
+                viewModel.v3.value = v3.text.toString()
+                viewModel.v3.value = v3.text.toString()
+                viewModel.nature.value = naturetext.text.toString()
+
 
 
                 viewModel.ajouterRapport(arguments?.get("id").toString().toInt())

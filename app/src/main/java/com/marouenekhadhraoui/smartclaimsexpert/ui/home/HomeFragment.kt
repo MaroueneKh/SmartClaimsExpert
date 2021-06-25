@@ -85,9 +85,11 @@ class HomeFragment : Fragment() {
        // val customDropDownAdapter = SpinnerFilterCustomAdapter(requireContext(), list)
 
         //(textField.editText as? AutoCompleteTextView)?.setAdapter(adapter) = customDropDownAdapter
+
         val items = listOf("En cours d'envoie", "En cours de confirmation", "Validé")
         val adapter = ArrayAdapter(requireContext(), R.layout.custom_spinner_filtres, items)
-
+         filtreText.apply {
+         }
         (filtreText)?.setAdapter(adapter)
         filtreText.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {

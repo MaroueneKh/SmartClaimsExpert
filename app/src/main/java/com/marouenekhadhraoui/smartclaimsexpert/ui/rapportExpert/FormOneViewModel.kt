@@ -24,14 +24,6 @@ class FormOneViewModel @Inject constructor(
     LifecycleObserver {
 
 
-    var nom = MutableLiveData<String>()
-    var expert = MutableLiveData<String>()
-    var reference = MutableLiveData<String>()
-    var dateMission = MutableLiveData<String>()
-    var addresse = MutableLiveData<String>()
-    var tel = MutableLiveData<String>()
-    var fax = MutableLiveData<String>()
-
 
 
 

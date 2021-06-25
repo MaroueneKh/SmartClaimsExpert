@@ -11,7 +11,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormOneViewModel"
+            type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormFourViewModel"
             />
     </data>
     <androidx.core.widget.NestedScrollView
@@ -67,14 +67,17 @@
             android:gravity="center"
             app:errorEnabled="true">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/nomText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/roboto_bold"
+                android:paddingStart="42dp"
+                android:paddingEnd="42dp"
                 android:text="@string/Nom"
-                app:fontFamily="@font/roboto_bold" />
+                app:fontFamily="@font/roboto_bold"
+                 />
 
         </LinearLayout>
 
@@ -90,9 +93,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
-
-                >
+                app:endIconCheckable="true"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext"
@@ -157,6 +160,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:endIconCheckable="true"
+                app:endIconMode="clear_text"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -164,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.expert}"
-                    android:focusable="auto"
+                    android:inputType="text"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -231,6 +236,7 @@
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.reference}"
                     android:focusable="auto"
+                    android:inputType="text"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -291,7 +297,7 @@
                 app:endIconMode="custom"
                 app:endIconCheckable="true"
                 app:endIconTint="@color/mainblue"
-                app:endIconDrawable="@drawable/ic_calendar_foreground"
+                app:endIconDrawable="@drawable/ic_date_picker"
 
                 >
 
@@ -359,6 +365,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:endIconCheckable="false"
+
+                app:endIconMode="clear_text"
 
                 >
 
@@ -369,6 +378,7 @@
                     android:lines="4"
                     android:text="@={viewModel.addresse}"
                     android:focusable="auto"
+                    android:inputType="textMultiLine"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -426,6 +436,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:endIconCheckable="false"
+
+                app:endIconMode="clear_text"
 
 
                 >
@@ -493,6 +506,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:endIconCheckable="false"
+
+                app:endIconMode="clear_text"
 
 
                 >
@@ -514,36 +530,32 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
         android:layout_marginBottom="24dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_cancel"
         android:text="@string/Cancel"
-        android:textColor="@color/mainblue"
+        app:strokeColor="@color/mainblue"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/suivant"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/suivant"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+
         android:layout_marginBottom="24dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_se_connecter"
         android:text="@string/Suivant"
         android:textColor="@color/white"
+        app:cornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cancel" />

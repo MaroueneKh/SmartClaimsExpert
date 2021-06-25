@@ -54,7 +54,4 @@ data class RapportModel (
     var nature :String,
 
 
-
-
-
 )

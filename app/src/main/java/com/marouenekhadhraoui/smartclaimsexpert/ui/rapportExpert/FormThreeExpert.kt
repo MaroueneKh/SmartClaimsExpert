@@ -1,5 +1,6 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert
 
+import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -18,13 +19,17 @@ import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.DialogPlanifierDateSuiviBinding
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.FormThreeExpertBinding
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.PlanifierSuiviViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dialog_planifier_date.*
 import kotlinx.android.synthetic.main.form_one_expert.*
 import kotlinx.android.synthetic.main.form_one_expert.edittext
 import kotlinx.android.synthetic.main.form_three_expert.*
+import kotlinx.android.synthetic.main.form_three_expert.vehTextField
+import kotlinx.android.synthetic.main.form_two_expert.*
 import java.util.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FormThreeExpert : Fragment() {
 
 
@@ -49,6 +54,15 @@ class FormThreeExpert : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val cal = Calendar.getInstance()
+        val y = cal.get(Calendar.YEAR)
+        val m = cal.get(Calendar.MONTH)
+        val d = cal.get(Calendar.DAY_OF_MONTH)
+        examTextField.setEndIconOnClickListener {
+            DatePickerDialog(requireContext(), { view, year, monthOfYear, dayOfMonth ->
+                dateexamtext.setText(dayOfMonth.toString() + "/ " + monthOfYear + "/" + year)
+            }, y, m, d).show()
+        }
         suivantThree.setOnClickListener {
             if (!CheckForm())
             {
