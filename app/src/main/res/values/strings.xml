@@ -92,6 +92,10 @@
     <string name="PasdeVideo">Pas de video pour le moment</string>
     <string name="Note">Note</string>
     <string name="Valider">Valider</string>
+    <string name="Jours">Jours</string>
+    <string name="Heures">Heures</string>
+    <string name="Minutes">Minutes</string>
+    <string name="Secondes">Secondes</string>
     <string name="Dossiers">Dossiers</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAPTNg63-NFTlo2x2oKJyky6o4_ZAacHYA</string>
     <string-array name="filtre_list">

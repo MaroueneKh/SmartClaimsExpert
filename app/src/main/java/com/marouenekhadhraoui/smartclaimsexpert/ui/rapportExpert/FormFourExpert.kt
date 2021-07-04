@@ -11,12 +11,15 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.textfield.TextInputEditText
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.DialogPlanifierDateSuiviBinding
@@ -47,7 +50,13 @@ class FormFourExpert : Fragment() {
 
     private lateinit var linearLayoutManager: LinearLayoutManager
 
+
+    @Inject
     lateinit var adapter: TextAdapter
+
+    private lateinit var navDirections: NavDirections
+
+
 
     @Inject
     lateinit var logger: Logger
@@ -66,27 +75,54 @@ class FormFourExpert : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setPointDeChoc()
+        setAdapter()
 
         valider.setOnClickListener {
             if (!CheckForm())
             {
                 viewModel.accord.value = edittext.text.toString()
                 viewModel.impact.value = filtreText.text.toString()
-                viewModel.fourniture1.value = designation.text.toString()
-                viewModel.fourniture2.value = designation2.text.toString()
-                viewModel.fourniture3.value = designation3.text.toString()
-                viewModel.montant1.value = montant.text.toString()
-                viewModel.montant2.value = montant2.text.toString()
-                viewModel.montant3.value = montant3.text.toString()
-                viewModel.v1.value = v.text.toString()
-                viewModel.v2.value = v2.text.toString()
-                viewModel.v3.value = v3.text.toString()
-                viewModel.v3.value = v3.text.toString()
+
                 viewModel.nature.value = naturetext.text.toString()
 
+              var textInputEditText1 : TextInputEditText =   binding?.recyclerView?.getChildAt(0)!!.findViewById<View>(R.id.edittext1) as (TextInputEditText)
+                var textInputEditText2 : TextInputEditText =   binding?.recyclerView?.getChildAt(0)!!.findViewById<View>(R.id.edittext2) as (TextInputEditText)
+                var textInputEditText3 : TextInputEditText =   binding?.recyclerView?.getChildAt(0)!!.findViewById<View>(R.id.edittext3) as (TextInputEditText)
 
+                var textInputEditText11 : TextInputEditText =   binding?.recyclerView?.getChildAt(1)!!.findViewById<View>(R.id.edittext1) as (TextInputEditText)
+                var textInputEditText21 : TextInputEditText =   binding?.recyclerView?.getChildAt(1)!!.findViewById<View>(R.id.edittext2) as (TextInputEditText)
+                var textInputEditText31 : TextInputEditText =   binding?.recyclerView?.getChildAt(1)!!.findViewById<View>(R.id.edittext3) as (TextInputEditText)
+
+
+                var textInputEditText12 : TextInputEditText =   binding?.recyclerView?.getChildAt(2)!!.findViewById<View>(R.id.edittext1) as (TextInputEditText)
+                var textInputEditText22 : TextInputEditText =   binding?.recyclerView?.getChildAt(2)!!.findViewById<View>(R.id.edittext2) as (TextInputEditText)
+                var textInputEditText32 : TextInputEditText =   binding?.recyclerView?.getChildAt(2)!!.findViewById<View>(R.id.edittext3) as (TextInputEditText)
+
+
+
+
+
+                viewModel.fourniture1.value = textInputEditText1.text.toString()
+                viewModel.fourniture2.value = textInputEditText11.text.toString()
+                viewModel.fourniture3.value = textInputEditText12.text.toString()
+
+                viewModel.montant1.value = textInputEditText2.text.toString()
+                viewModel.montant2.value = textInputEditText21.text.toString()
+                viewModel.montant3.value = textInputEditText22.text.toString()
+
+                viewModel.v1.value = textInputEditText3.text.toString()
+                viewModel.v2.value = textInputEditText31.text.toString()
+                viewModel.v3.value = textInputEditText32.text.toString()
 
                 viewModel.ajouterRapport(arguments?.get("id").toString().toInt())
+                viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"Validé")
+
+                viewModel.modifierSuivi(arguments?.get("id").toString().toInt(),1,"Facture ajouté")
+
+               val bundle = bundleOf("id" to arguments?.get("id").toString())
+                setNavDirectionsTo(bundle)
+                val navController = findNavController()
+                navController.navigate(navDirections)
 
 
 
@@ -103,6 +139,20 @@ class FormFourExpert : Fragment() {
         (filtreText)?.setAdapter(adapter)
 
     }
+    fun setNavDirectionsTo(bundle: Bundle) {
+
+        navDirections = object : NavDirections {
+            override fun getArguments(): Bundle {
+                return bundle
+            }
+
+            override fun getActionId(): Int {
+                return R.id.action_formFourExpert_to_homeFragment
+            }
+        }
+
+
+    }
 
 
     fun CheckForm(): Boolean {
@@ -110,42 +160,6 @@ class FormFourExpert : Fragment() {
         if (TextUtils.isEmpty(edittext!!.text)) {
             empty = true
             edittext!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(designation!!.text)) {
-            empty = true
-            designation!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(montant!!.text)) {
-            empty = true
-            montant!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(v!!.text)) {
-            empty = true
-            v!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(designation2!!.text)) {
-            empty = true
-            designation2!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(montant2!!.text)) {
-            empty = true
-            montant2!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(v2!!.text)) {
-            empty = true
-            v2!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(designation3!!.text)) {
-            empty = true
-            designation3!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(montant3!!.text)) {
-            empty = true
-            montant3!!.error = "Champ Vide"
-        }
-        if (TextUtils.isEmpty(v3!!.text)) {
-            empty = true
-            v3!!.error = "Champ Vide"
         }
         if (TextUtils.isEmpty(naturetext!!.text)) {
             empty = true
@@ -155,10 +169,27 @@ class FormFourExpert : Fragment() {
             empty = true
             naturetext!!.error = "Champ Vide"
         }
-
-
         return empty
     }
+
+    fun setAdapter() {
+
+        linearLayoutManager = LinearLayoutManager(requireContext())
+
+        binding?.recyclerView?.layoutManager = linearLayoutManager
+        list.add(TextModel("slslsls"))
+        list.add(TextModel("slslsls"))
+        list.add(TextModel("slslsls"))
+        adapter.setItem(list)
+        binding?.recyclerView?.adapter = adapter
+
+        binding?.recyclerView?.addItemDecoration(
+            MarginItemDecoration(1)
+        )
+
+
+    }
+
 
 
 

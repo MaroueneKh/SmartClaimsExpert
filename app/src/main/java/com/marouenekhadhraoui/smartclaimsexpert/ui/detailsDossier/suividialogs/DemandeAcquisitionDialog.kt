@@ -39,6 +39,8 @@ class DemandeAcquisitionDialog : DialogFragment() {
 
         myview.btnSubmit.setOnClickListener(View.OnClickListener {
             viewModel.modifierSuivi(arguments?.get("id").toString().toInt(),1,"En attente de facture")
+            viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de facture")
+
 
             val bundle = bundleOf("id" to arguments?.get("id").toString())
             setNavDirections(bundle)

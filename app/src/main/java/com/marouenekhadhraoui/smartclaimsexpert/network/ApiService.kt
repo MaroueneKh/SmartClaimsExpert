@@ -71,6 +71,12 @@ interface ApiService {
         @Query(value = "idAssure") idDossier: Int,
         @Body rapport: RapportModel,
     ): List<RapportModel>
+    @POST("api/getCountDown")
+    suspend fun getCountDown(
+        @Query(value = "idAssure") idAssure: Int,
+    ): List<VisioModel>
+    @POST("api/modifierDossier")
+    suspend fun modifierDossier(@Query(value = "idDossier") idDossier: Int,@Query(value = "etat") etat:String): List<DossierModel>
 
 
 

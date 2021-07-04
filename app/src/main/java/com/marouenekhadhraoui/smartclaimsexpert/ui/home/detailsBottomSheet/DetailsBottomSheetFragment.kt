@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,9 @@ import com.marouenekhadhraoui.smartclaimsexpert.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.bottomsheet.*
 import kotlinx.coroutines.flow.collect
+import java.time.Duration
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -46,13 +50,13 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.bottomsheet, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpViews()
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setUpViews() {
         // We can have cross button on the top right corner for providing elemnet to dismiss the bottom sheet
         //iv_close.setOnClickListener { dismissAllowingStateLoss() }
@@ -60,6 +64,8 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
         setNom()
         setDetailsAssure()
         observeDossiers()
+        getVisio()
+
         img_icon_call.setOnClickListener(View.OnClickListener {
             startActivityToVisio(VisioActivity(),requireView())
         })
@@ -195,6 +201,101 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
         )
 
 
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getVisio()
+    {
+        viewModel.getCountDown()
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.visio.collect {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        logger.log("success")
+                        if (it.data!!.isEmpty()) {
+                            logger.log("null")
+                        } else {
+
+                            if (it.data[0].effectue == 0)
+                            {
+                                card.visible()
+                                setTimer(it.data[0].date,it.data[0].time)
+                            }
+
+                        }
+
+                    }
+                    Status.LOADING -> {
+                        logger.log("loading")
+                        llProgressBarForBottom?.visible()
+
+                    }
+                    Status.ERROR -> {
+                        logger.log("error")
+                        if (it.message.equals(internetErr)) {
+                            logger.log("internet error")
+                            //  Snackbar.make(findViewById(R.id.constraint), "Verifier votre connexion", Snackbar.LENGTH_LONG).show()
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setTimer(date:String,time:String)
+    {
+        logger.log("")
+        logger.log(date+" "+time+":"+"00")
+
+        val dateTime = LocalDateTime.parse(
+            date+" "+time+":"+"00",
+            DateTimeFormatter.ofPattern("yyyy/M/dd HH:mm:ss")
+        )
+
+
+        val duration = Duration.between(dateTime.plusHours(1), LocalDateTime.now())
+
+
+        val timer = object : CountDownTimer(604800000 - duration.toMillis() + 5000, 1000) {
+            override fun onFinish() {
+
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                try {
+
+
+                    var diff = millisUntilFinished
+                    val secondsInMilli: Long = 1000
+                    val minutesInMilli = secondsInMilli * 60
+                    val hoursInMilli = minutesInMilli * 60
+                    val daysInMilli = hoursInMilli * 24
+
+                    val elapsedDays = diff / daysInMilli
+                    diff %= daysInMilli
+
+                    val elapsedHours = diff / hoursInMilli
+                    diff %= hoursInMilli
+
+                    val elapsedMinutes = diff / minutesInMilli
+                    diff %= minutesInMilli
+
+                    val elapsedSeconds = diff / secondsInMilli
+
+
+                    daysText.text = elapsedDays.toString()
+                    hoursText.text = elapsedHours.toString()
+                    secondsText.text = elapsedMinutes.toString()
+                    minutesText.text = elapsedSeconds.toString()
+
+
+                } catch (ex: Exception) {
+                }
+            }
+        }
+        timer.start()
     }
 
 

@@ -40,11 +40,18 @@ class ConfirmerReparationDialog : DialogFragment() {
         val myview: View = inflater.inflate(R.layout.dialog_confirmer_reparation, container, false)
         myview.btnSuivant.setOnClickListener {
             if (myview.oui.isChecked)
-            viewModel.modifierVisio(arguments?.get("id").toString().toInt(),1,"Pret pour reparation")
+            {
+                viewModel.modifierVisio(arguments?.get("id").toString().toInt(),1,"Pret pour reparation")
+                viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"Pret pour reparation")
+            }
+
+
 
 else if (myview.non.isChecked)
 
-                viewModel.modifierVisio(arguments?.get("id").toString().toInt(),1,"En attente d'avis")
+
+            viewModel.modifierVisio(arguments?.get("id").toString().toInt(),1,"En attente d'avis")
+            viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente d'avis")
 
             val bundle = bundleOf("id" to arguments?.get("id").toString())
             setNavDirections(bundle)

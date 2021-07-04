@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.data.local.Datapreferences
 import com.marouenekhadhraoui.smartclaimsexpert.network.NetworkHelper
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierRepository
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Resource
@@ -32,6 +33,8 @@ class DetailsBottomViewModel @Inject constructor(
 
     var list: List<DetailAssureModel> = emptyList()
 
+    var listVisio: List<VisioModel> = emptyList()
+
     var listHistorique: List<DossierModel> = emptyList()
     private val _detailassure = MutableStateFlow(Resource.loading(
             data = list,
@@ -46,6 +49,16 @@ class DetailsBottomViewModel @Inject constructor(
 
     // public
     val dossier: StateFlow<Resource<List<DossierModel>>> = _dossier
+
+
+
+    private val _visio = MutableStateFlow(Resource.loading(
+        data = listVisio,
+    ))
+
+    // public
+    val visio: StateFlow<Resource<List<VisioModel>>> = _visio
+
 
     private lateinit var tokenFetched: String
 
@@ -109,6 +122,35 @@ fun afficherHistorique()
 
 
 }
+    fun getCountDown()
+    {
+        if (networkHelper.isNetworkConnected()) {
+            viewModelScope.launch {
+                try {
+
+                    logger.log("try")
+                    apprefs.token.collect { token ->
+                        _visio.value = Resource.success(
+                            data = dossierRepository.getCountDown(
+                           1
+                            )
+                        )
+                    }
+
+                } catch (exception: Exception) {
+                    logger.log("catch")
+                    logger.log(exception.message.toString())
+                    _dossier.value = Resource.error(
+                        data = null,
+                        message = exception.message ?: otherErr
+                    )
+                }
+            }
+        }
+
+    }
 
 
-}
+
+    }
+

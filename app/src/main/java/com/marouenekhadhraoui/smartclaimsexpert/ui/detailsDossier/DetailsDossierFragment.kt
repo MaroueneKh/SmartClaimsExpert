@@ -250,13 +250,13 @@ class DetailsDossierFragment : Fragment(), OnMapReadyCallback {
                         if (it.data!!.isEmpty()) {
                             logger.log("no suivi")
                         } else {
-                            if (it.data!![0].resultat.equals("Facture Envoye"))
+                            if (it.data!![0].resultat.equals("Facture Envoyé"))
                                 img_facture.visible()
                                 txt_facture.visible()
                                 ProgressFacture.visible()
                          val  id:String = arguments?.get("id").toString()
 
-                            val facture = storageRef.child("$id/images/facture.png")
+                            val facture = storageRef.child("facture.png")
                             facture.downloadUrl.addOnSuccessListener { url ->
                                 factur_png.visible()
                                 factur_png.load(url)

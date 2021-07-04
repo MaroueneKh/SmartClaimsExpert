@@ -14,1118 +14,455 @@
             type="com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.FormFourViewModel"
             />
     </data>
-    <androidx.core.widget.NestedScrollView
-        android:fillViewport="true"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="0dp"
+            android:layout_marginBottom="24dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/cancel"
+            app:layout_constraintEnd_toEndOf="@id/cancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/degatsText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center_horizontal"
-                android:maxLines="2"
-                android:text="@string/Rapport"
-                android:textAlignment="center"
-                app:fontFamily="@font/roboto_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/degatsText">
-
-                <LinearLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/degatsText"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-
-                    app:errorEnabled="true">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/nomText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/Accord"
-                        app:fontFamily="@font/roboto_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nomTextField"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-                        app:endIconCheckable="true"
-                        app:endIconMode="clear_text"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edittext"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="?attr/colorSecondary"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:nestedScrollingEnabled="true"
-                            android:text="@={viewModel.accord}" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="@string/Rapport"
+                    android:textAlignment="center"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-                </LinearLayout>
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat3"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:gravity="center"
-                    app:errorEnabled="true">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/Pieces"
-                        app:fontFamily="@font/roboto_bold" />
-
-                </LinearLayout>
-
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/degatsText">
 
-                    app:errorEnabled="true">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:orientation="horizontal"
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                        app:errorEnabled="true">
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/nomText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/Accord"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/Point"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/filtre_impact"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/Impact"
-                        app:errorEnabled="true"
-                        android:textColorHint="@color/black">
-
-
-                        <AutoCompleteTextView
-                            android:id="@+id/filtreText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/nomTextField"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/white"
-                            android:inputType="none"
-                            android:maxLines="1"
-                            android:textColor="@color/mainblue" />
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
+                            app:errorEnabled="true">
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/pieces"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="?attr/colorSecondary"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:nestedScrollingEnabled="true"
-                            android:text="@={viewModel.nom}" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/estimationText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center_horizontal"
-                android:maxLines="2"
-                android:text="@string/Estimation"
-                android:textAlignment="center"
-                app:fontFamily="@font/roboto_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/reserveText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center_horizontal"
-                android:maxLines="2"
-                android:text="@string/Sous"
-                android:textAlignment="center"
-                android:textColor="@color/greylight"
-                app:fontFamily="@font/roboto_bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/estimationText" />
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reserveText">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-                    app:errorEnabled="true">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center_horizontal"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/Designation"
-                        app:fontFamily="@font/roboto_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    app:errorEnabled="true">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/Montant"
-                        app:fontFamily="@font/roboto_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    app:errorEnabled="true">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center_horizontal"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="@string/V"
-                        app:fontFamily="@font/roboto_bold" />
-
-                </LinearLayout>
-
-
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/nestedScrollView"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:fillViewport="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat5">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/linearLayoutCompat6"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edittext"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
+                                android:backgroundTint="?attr/colorSecondary"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:nestedScrollingEnabled="true"
+                                android:text="@={viewModel.accord}" />
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/designation"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.fourniture1}" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                            </com.google.android.material.textfield.TextInputLayout>
 
-                        </LinearLayout>
+                    </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
 
-                            <com.google.android.material.textfield.TextInputLayout
 
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                                >
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/montant"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.montant1}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/v"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.v1}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/linearLayoutCompat7"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat6">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/designation2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.fourniture2}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/montant2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.montant2}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/v2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.v2}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/linearLayoutCompat8"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat7">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/designation3"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.fourniture3}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/montant3"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.montant3}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-                                app:endIconCheckable="true"
-                                app:endIconMode="clear_text"
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/v3"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.v3}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/linearLayoutCompat10"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat9">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/designation5"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/montant5"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/v5"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/linearLayoutCompat9"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat8">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/designation4"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/montant4"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/v4"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/linearLayoutCompat11"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat10">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/designation6"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="text"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/montant6"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.33"
-                            android:orientation="horizontal"
-                            app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputLayout
-
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:errorEnabled="true"
-
-                                >
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/v6"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:backgroundTint="?attr/colorSecondary"
-                                    android:focusable="auto"
-                                    android:inputType="number"
-                                    android:nestedScrollingEnabled="true"
-                                    android:text="@={viewModel.nom}" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.core.widget.NestedScrollView>
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linearLayoutCompat13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:orientation="horizontal"
-                android:weightSum="10"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat4"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:orientation="horizontal"
-                    app:errorEnabled="true">
+                    android:weightSum="10"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:orientation="horizontal"
 
+                        app:errorEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/Point"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/filtre_impact"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/Impact"
+                            android:textColorHint="@color/black"
+                            app:errorEnabled="true">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/filtreText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:inputType="none"
+                                android:maxLines="1"
+                                android:textColor="@color/mainblue" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/estimationText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="@string/Estimation"
+                    android:textAlignment="center"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/reserveText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:text="@string/Sous"
+                    android:textAlignment="center"
+                    android:textColor="@color/greylight"
+                    app:fontFamily="@font/roboto_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/estimationText" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reserveText">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center_horizontal"
+                            android:text="@string/Designation"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/Montant"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.33"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center_horizontal"
+                            android:text="@string/V"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="50dp"
+                    android:weightSum="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat5">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_bold"
-                        android:gravity="center_horizontal"
-                        android:text="@string/Nature"
-                        app:fontFamily="@font/roboto_bold" />
+                        android:layout_weight="10">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="6"
-                    android:orientation="horizontal"
-                    app:errorEnabled="true">
-
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:errorEnabled="true"
-                        app:endIconCheckable="true"
-                        app:endIconMode="clear_text"
-
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/naturetext"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:backgroundTint="?attr/colorSecondary"
-                            android:focusable="auto"
-                            android:inputType="text"
-                            android:nestedScrollingEnabled="true"
-                            android:text="@={viewModel.nature}" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                </LinearLayout>
+                            android:clipToPadding="false"
+                            android:orientation="vertical"
+                            android:padding="4dp"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat5">
 
 
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompat13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    app:errorEnabled="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center_horizontal"
+                            android:text="@string/Nature"
+                            app:fontFamily="@font/roboto_bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:orientation="horizontal"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputLayout
+
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:endIconCheckable="true"
+                            app:endIconMode="clear_text"
+                            app:errorEnabled="true"
+
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/naturetext"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="?attr/colorSecondary"
+                                android:focusable="auto"
+                                android:inputType="text"
+                                android:nestedScrollingEnabled="true"
+                                android:text="@={viewModel.nature}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_cancel"
+            android:text="@string/Cancel"
+            android:textColor="@color/mainblue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/valider"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/valider"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_se_connecter"
+            android:text="@string/Valider"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cancel" />
 
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
-                android:layout_marginBottom="24dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_cancel"
-                android:text="@string/Cancel"
-                android:textColor="@color/mainblue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/valider"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/valider"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginBottom="24dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_se_connecter"
-                android:text="@string/Valider"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cancel" />
-
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

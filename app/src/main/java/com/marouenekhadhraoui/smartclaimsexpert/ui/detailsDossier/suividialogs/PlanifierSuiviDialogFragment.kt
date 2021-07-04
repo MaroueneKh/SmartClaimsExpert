@@ -58,6 +58,8 @@ class PlanifierSuiviDialogFragment : DialogFragment() {
                     logger.log("ajouter suivi")
                     logger.log(arguments?.get("id").toString())
                     viewModel.ajouterSuivi(arguments?.get("id").toString().toInt(),1,1,viewModel.date.value!!,viewModel.time.value!!)
+                    viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de suivi")
+
                     viewPager.currentItem = viewPager.currentItem + 1
 
                 }

@@ -1,6 +1,7 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.home
 
 import com.marouenekhadhraoui.smartclaimsexpert.network.ApiHelper
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.rapportExpert.RapportModel
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,5 +15,7 @@ class DossierRepository @Inject constructor(
     suspend fun getVisio(idDossier: Int) = apiHelper.getVisio(idDossier)
     suspend fun getSuivi(idDossier: Int) = apiHelper.getSuivi(idDossier)
     suspend fun ajouterRapport(idDossier: Int,rapportModel:RapportModel) = apiHelper.ajouterRapport(idDossier,rapportModel)
+    suspend fun getCountDown(idAssure: Int): List<VisioModel> = apiHelper.getCountDown(idAssure)
+    suspend fun modifierDossier(idDossier: Int,etat:String): List<DossierModel> = apiHelper.modifierDossier(idDossier,etat)
 
 }

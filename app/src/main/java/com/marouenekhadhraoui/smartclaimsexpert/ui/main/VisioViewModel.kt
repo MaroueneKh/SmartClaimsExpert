@@ -12,6 +12,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.network.NetworkHelper
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.VisioRepository
+import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierRepository
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Event
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Resource
@@ -36,6 +37,8 @@ class VisioViewModel @Inject constructor(
     var list: List<VisioModel> = emptyList()
     var listSuivi: List<SuiviModel> = emptyList()
 
+    var listDossier: List<DossierModel> = emptyList()
+
     var date = MutableLiveData<String>()
     var time = MutableLiveData<String>()
 
@@ -50,6 +53,13 @@ class VisioViewModel @Inject constructor(
             data = listSuivi,
         ))
     val suivi: StateFlow<Resource<List<SuiviModel>>> = _suivi
+
+
+    private val _dossier = MutableStateFlow(
+        Resource.loading(
+            data = listDossier,
+        ))
+    val dossier: StateFlow<Resource<List<DossierModel>>> = _dossier
 
     fun modifierVisio(idDossier:Int,effectue:Int,resultat:String)
     {
@@ -116,6 +126,38 @@ class VisioViewModel @Inject constructor(
         }
 
     }
+
+    fun modifierDossier(idDossier:Int,etat:String)
+    {
+        if (networkHelper.isNetworkConnected()) {
+            viewModelScope.launch {
+                try {
+                    _dossier.value = Resource.success(
+                        data = dossierRepository.modifierDossier(idDossier,etat)
+                    )
+
+                } catch (exception: Exception) {
+                    logger.log("catch")
+                    logger.log(exception.message.toString())
+                    _visio.value = Resource.error(
+                        data = null,
+                        message = exception.message ?: otherErr
+                    )
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
     fun callAssure(idAssure:Int)
     {
         if (networkHelper.isNetworkConnected()) {

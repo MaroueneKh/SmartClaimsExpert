@@ -10,6 +10,9 @@ import androidx.lifecycle.viewModelScope
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.data.local.Datapreferences
 import com.marouenekhadhraoui.smartclaimsexpert.network.NetworkHelper
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.VisioModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.suividialogs.SuiviModel
+import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.VisioRepository
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierModel
 import com.marouenekhadhraoui.smartclaimsexpert.ui.home.DossierRepository
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Resource
@@ -26,6 +29,7 @@ import javax.inject.Singleton
 @HiltViewModel
 class FormFourViewModel @Inject constructor(
     private val dossierRepository: DossierRepository,
+    private val visioRepository: VisioRepository,
     var networkHelper: NetworkHelper,
     var logger: Logger,
     private val apprefs: Datapreferences
@@ -83,11 +87,28 @@ class FormFourViewModel @Inject constructor(
     var nature = MutableLiveData<String>()
 
     var list: List<RapportModel> = emptyList()
+    var listDossier: List<DossierModel> = emptyList()
+
+    var listSuivi: List<SuiviModel> = emptyList()
     lateinit var rapportTest:RapportModel
 
     private val _rapport = MutableStateFlow(Resource.loading(
         data = list,
     ))
+
+
+    private val _dossier = MutableStateFlow(
+        Resource.loading(
+            data = listDossier,
+        ))
+    val dossier: StateFlow<Resource<List<DossierModel>>> = _dossier
+
+
+    private val _suivi = MutableStateFlow(
+        Resource.loading(
+            data = listSuivi,
+        ))
+    val suivi: StateFlow<Resource<List<SuiviModel>>> = _suivi
 
     // public
     val rapport: StateFlow<Resource<List<RapportModel>>> = _rapport
@@ -128,5 +149,47 @@ fun ajouterRapport(idDossier:Int)
 }
 
 }
+    fun modifierDossier(idDossier:Int,etat:String)
+    {
+        if (networkHelper.isNetworkConnected()) {
+            viewModelScope.launch {
+                try {
+                    _dossier.value = Resource.success(
+                        data = dossierRepository.modifierDossier(idDossier,etat)
+                    )
+
+                } catch (exception: Exception) {
+                    logger.log("catch")
+                    logger.log(exception.message.toString())
+                    _dossier.value = Resource.error(
+                        data = null,
+                        message = exception.message ?: otherErr
+                    )
+                }
+            }
+        }
 
     }
+
+    fun modifierSuivi(idDossier:Int,effectue:Int,resultat:String)
+    {
+        if (networkHelper.isNetworkConnected()) {
+            viewModelScope.launch {
+                try {
+                    _suivi.value = Resource.success(
+                        data = visioRepository.modifierSuivi(idDossier,effectue,resultat)
+                    )
+
+                } catch (exception: Exception) {
+                    logger.log("catch")
+                    logger.log(exception.message.toString())
+
+                }
+            }
+        }
+
+    }
+
+
+
+}

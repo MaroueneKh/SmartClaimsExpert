@@ -199,6 +199,25 @@ class VideoVisioFragment : Fragment() {
                                                                 })
 
                                                             }
+                                                            else if (it.data[0].resultat == "Facture ajouté")
+                                                            {
+                                                                btnVisio.isEnabled = false
+                                                                btnVisio.background =
+                                                                    resources.getDrawable(R.drawable.button_se_connecter_disabled)
+                                                                btnValider.isEnabled = false
+                                                                jz_video.visible()
+                                                                txt_videoSuivi.visible()
+                                                                jz_videoSuivi.visible()
+                                                                card.visible()
+                                                                textVideo.invisible()
+                                                                btnVisio.text = getString(R.string.CommencerSuivi)
+                                                                txt_facture.visible()
+                                                                img_facture.visible()
+                                                                textFactureSmart.visible()
+                                                                btnValider.invisible()
+
+
+                                                            }
                                                             else{
                                                                 btnVisio.isEnabled = false
                                                                 btnVisio.background =
