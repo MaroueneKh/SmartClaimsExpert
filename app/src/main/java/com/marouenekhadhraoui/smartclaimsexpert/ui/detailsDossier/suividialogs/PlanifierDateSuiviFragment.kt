@@ -15,6 +15,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.databinding.DialogPlanifierDateB
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.DialogPlanifierDateSuiviBinding
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.PlanifierVisioModelView
 import kotlinx.android.synthetic.main.dialog_planifier_date.*
+import java.time.Duration
 import java.util.*
 import javax.inject.Inject
 
@@ -43,7 +44,7 @@ class PlanifierDateSuiviFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val today = Calendar.getInstance()
         datePicker1
-        datePicker1.minDate = System.currentTimeMillis()
+        datePicker1.minDate = System.currentTimeMillis().plus(Duration.ofDays(2).toDays())
         datePicker1.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH),
             today.get(Calendar.DAY_OF_MONTH)
         ) { view, year, month, day ->

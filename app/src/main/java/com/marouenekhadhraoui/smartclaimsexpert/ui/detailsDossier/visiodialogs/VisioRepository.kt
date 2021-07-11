@@ -13,5 +13,5 @@ class VisioRepository @Inject constructor(
     suspend fun modifierVisio(idDossier:Int,effectue:Int,resultat:String)= apiHelper.modifierVisio(idDossier,effectue,resultat)
     suspend fun ajouterSuivi(idDossier:Int,idAssure: Int, idExpert: Int, date: String, time: String)= apiHelper.ajouterSuivi(idDossier,idAssure,idExpert,date,time,0)
     suspend fun modifierSuivi(idDossier:Int,effectue:Int,resultat:String)= apiHelper.modifierSuivi(idDossier,effectue,resultat)
-     suspend fun callAssure(idAssure:Int) = apiHelper.callAssure(idAssure)
+     suspend fun callAssure(idAssure:Int,call:String) = apiHelper.callAssure(idAssure,call)
 }

@@ -20,8 +20,10 @@ import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.PlanifierVisioModelView
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.PickDateFragment
 import com.marouenekhadhraoui.smartclaimsexpert.ui.detailsDossier.visiodialogs.PlanifierExpertiseFragment
+import com.marouenekhadhraoui.smartclaimsexpert.utils.invisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dialog_planifier.view.*
+import kotlinx.android.synthetic.main.dialog_suivi_planifier.*
 import javax.inject.Inject
 
 private const val NUM_PAGES = 3
@@ -55,12 +57,14 @@ class PlanifierSuiviDialogFragment : DialogFragment() {
             {
                 0-> viewPager.currentItem = viewPager.currentItem + 1
                 1->{
+                    degatsText.invisible()
                     logger.log("ajouter suivi")
                     logger.log(arguments?.get("id").toString())
                     viewModel.ajouterSuivi(arguments?.get("id").toString().toInt(),1,1,viewModel.date.value!!,viewModel.time.value!!)
-                    viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de suivi")
+
 
                     viewPager.currentItem = viewPager.currentItem + 1
+
 
                 }
                 2-> {

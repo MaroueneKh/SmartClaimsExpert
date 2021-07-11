@@ -57,7 +57,7 @@
             android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:background="@drawable/button_se_connecter"
-            android:text="@string/Envoyer"
+            android:text="@string/Confirmer"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

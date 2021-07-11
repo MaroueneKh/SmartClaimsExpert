@@ -17,14 +17,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.core.widget.NestedScrollView
+            android:layout_width="593dp"
+            android:layout_height="761dp"
             android:fillViewport="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            app:layout_constraintBottom_toTopOf="@+id/cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/degatsText"
@@ -66,8 +71,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
-                        android:orientation="horizontal"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         app:errorEnabled="true">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -93,11 +98,11 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
-                            app:endIconMode="custom"
                             app:endIconCheckable="true"
-                            app:endIconTint="@color/mainblue"
                             app:endIconDrawable="@drawable/ic_date_picker"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/mainblue"
+                            app:errorEnabled="true"
 
                             >
 
@@ -158,24 +163,23 @@
                         android:layout_height="match_parent"
                         android:layout_weight="6"
                         android:orientation="horizontal">
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/expertTextField"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
-                            >
+                            app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/vehexpEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:text="@={viewModel.vehexp}"
                                 android:focusable="auto"
-                                />
+                                android:inputType="text"
+                                android:text="@={viewModel.vehexp}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,9 +235,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -241,10 +245,9 @@
                                 android:id="@+id/lieuTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@={viewModel.lieu}"
-                                android:inputType="text"
                                 android:focusable="auto"
-                                />
+                                android:inputType="text"
+                                android:text="@={viewModel.lieu}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -300,9 +303,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -310,10 +313,9 @@
                                 android:id="@+id/obsTextfield"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:text="@={viewModel.obs}"
                                 android:focusable="auto"
-                                />
+                                android:inputType="text"
+                                android:text="@={viewModel.obs}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -369,9 +371,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -379,16 +381,16 @@
                                 android:id="@+id/marqueTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:lines="1"
-                                android:text="@={viewModel.marque}"
                                 android:focusable="auto"
                                 android:inputType="text"
-                                />
+                                android:lines="1"
+                                android:text="@={viewModel.marque}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -407,6 +409,7 @@
                             app:fontFamily="@font/roboto_bold" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -418,9 +421,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -428,18 +431,15 @@
                                 android:id="@+id/typeTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:lines="1"
-                                android:text="@={viewModel.type}"
                                 android:focusable="auto"
                                 android:inputType="text"
-                                />
+                                android:lines="1"
+                                android:text="@={viewModel.type}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>
-
-
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -490,9 +490,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
 
                             >
@@ -501,15 +501,15 @@
                                 android:id="@+id/puissTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:text="@={viewModel.puiss}"
                                 android:focusable="auto"
-                                />
+                                android:inputType="number"
+                                android:text="@={viewModel.puiss}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -528,6 +528,7 @@
                             app:fontFamily="@font/roboto_bold" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -539,9 +540,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
 
                             >
@@ -550,17 +551,14 @@
                                 android:id="@+id/indexTextField"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:text="@={viewModel.indicek}"
                                 android:focusable="auto"
-                                />
+                                android:inputType="number"
+                                android:text="@={viewModel.indicek}" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>
-
-
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -611,9 +609,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -629,6 +627,7 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -647,6 +646,7 @@
                             app:fontFamily="@font/roboto_bold" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -658,9 +658,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -676,8 +676,6 @@
 
 
                     </LinearLayout>
-
-
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -729,11 +727,10 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
-
                             app:endIconCheckable="true"
+
                             app:endIconMode="clear_text"
-                            >
+                            app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/vehTextField"
@@ -747,6 +744,7 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -776,9 +774,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -794,8 +792,6 @@
 
 
                     </LinearLayout>
-
-
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -847,9 +843,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -865,6 +861,7 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -883,6 +880,7 @@
                             app:fontFamily="@font/roboto_bold" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -893,11 +891,11 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
-                            app:endIconMode="custom"
                             app:endIconCheckable="true"
-                            app:endIconTint="@color/mainblue"
                             app:endIconDrawable="@drawable/ic_date_picker"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/mainblue"
+                            app:errorEnabled="true"
 
                             >
 
@@ -913,8 +911,6 @@
 
 
                     </LinearLayout>
-
-
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -965,9 +961,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -983,6 +979,7 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -1001,6 +998,7 @@
                             app:fontFamily="@font/roboto_bold" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -1012,9 +1010,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 
@@ -1030,8 +1028,6 @@
 
 
                     </LinearLayout>
-
-
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -1082,9 +1078,9 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:errorEnabled="true"
                             app:endIconCheckable="true"
                             app:endIconMode="clear_text"
+                            app:errorEnabled="true"
 
                             >
 

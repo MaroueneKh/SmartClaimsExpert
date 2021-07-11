@@ -17,5 +17,6 @@ class DossierRepository @Inject constructor(
     suspend fun ajouterRapport(idDossier: Int,rapportModel:RapportModel) = apiHelper.ajouterRapport(idDossier,rapportModel)
     suspend fun getCountDown(idAssure: Int): List<VisioModel> = apiHelper.getCountDown(idAssure)
     suspend fun modifierDossier(idDossier: Int,etat:String): List<DossierModel> = apiHelper.modifierDossier(idDossier,etat)
+    suspend fun getProfil(token: String) = apiHelper.getProfil(token)
 
 }

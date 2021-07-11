@@ -159,4 +159,20 @@
             android:id="@+id/action_formFourExpert_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailsProfilFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.profil.DetailsProfilFragment"
+        android:label="DetailsProfilFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.marouenekhadhraoui.smartclaimsexpert.ui.profil.ProfilFragment"
+        android:label="ProfilFragment" >
+        <action
+            android:id="@+id/action_profilFragment_to_detailsProfilFragment"
+            app:destination="@id/detailsProfilFragment" />
+    </fragment>
 </navigation>

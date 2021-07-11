@@ -53,7 +53,7 @@ class PlanifierVisioDialogFragment : DialogFragment() {
                0-> viewPager.currentItem = viewPager.currentItem + 1
                1->{
                    viewModel.ajouterVisio(arguments?.get("id").toString().toInt(),1,1,viewModel.date.value!!,viewModel.time.value!!)
-                   viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attende de visio")
+                   viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de visio")
 
 
                    viewPager.currentItem = viewPager.currentItem + 1

@@ -65,7 +65,6 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
         setDetailsAssure()
         observeDossiers()
         getVisio()
-
         img_icon_call.setOnClickListener(View.OnClickListener {
             startActivityToVisio(VisioActivity(),requireView())
         })
@@ -217,8 +216,8 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
                             if (it.data[0].effectue == 0)
                             {
-                                card.visible()
-                                setTimer(it.data[0].date,it.data[0].time)
+                            //  card.visible()
+                                //setTimer(it.data[0].date,it.data[0].time)
                             }
 
                         }
@@ -251,12 +250,15 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
         val dateTime = LocalDateTime.parse(
             date+" "+time+":"+"00",
-            DateTimeFormatter.ofPattern("yyyy/M/dd HH:mm:ss")
+            DateTimeFormatter.ofPattern("yyyy/M/d HH:mm:ss")
         )
 
 
-        val duration = Duration.between(dateTime.plusHours(1), LocalDateTime.now())
+        val duration = Duration.between(dateTime.plusHours(1),LocalDateTime.now())
+        logger.log(dateTime.plusHours(1).toString())
 
+        logger.log(duration.toMillis().toString())
+        logger.log((604800000 - duration.toMillis() + 5000).toString())
 
         val timer = object : CountDownTimer(604800000 - duration.toMillis() + 5000, 1000) {
             override fun onFinish() {
@@ -265,9 +267,10 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
             override fun onTick(millisUntilFinished: Long) {
                 try {
-
+                    logger.log(millisUntilFinished.toString())
 
                     var diff = millisUntilFinished
+
                     val secondsInMilli: Long = 1000
                     val minutesInMilli = secondsInMilli * 60
                     val hoursInMilli = minutesInMilli * 60
@@ -290,7 +293,14 @@ class DetailsBottomSheetFragment : BottomSheetDialogFragment() {
                     secondsText.text = elapsedMinutes.toString()
                     minutesText.text = elapsedSeconds.toString()
 
-
+                    logger.log("days")
+                    logger.log(elapsedDays.toString())
+                    logger.log("hours")
+                    logger.log(elapsedHours.toString())
+                    logger.log("minutes")
+                    logger.log(elapsedMinutes.toString())
+                    logger.log("minutes")
+                    logger.log( elapsedSeconds.toString())
                 } catch (ex: Exception) {
                 }
             }

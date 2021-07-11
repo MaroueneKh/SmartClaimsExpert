@@ -42,7 +42,7 @@ class ConfirmerReparationDialog : DialogFragment() {
             if (myview.oui.isChecked)
             {
                 viewModel.modifierVisio(arguments?.get("id").toString().toInt(),1,"Pret pour reparation")
-                viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"Pret pour reparation")
+
             }
 
 

@@ -11,24 +11,32 @@
     <string name="Enligne">En ligne</string>
     <string name="DashboardExpert">Dashboard Expert</string>
     <string name="Expertise">Expertise planifié avec succés</string>
-    <string name="DemandeAqcuisition">Demande d\'aqcuisition de la facture</string>
+    <string name="DemandeAqcuisition">Merci de Déposer le rapport d\'expertise ou de remplir le formulaire smart claim</string>
     <string name="Envoyer">Envoyer</string>
+    <string name="Confirmer">Confirmer</string>
     <string name="Type">Type de l\'accident</string>
     <string name="Montant">Montant</string>
     <string name="TypeExpertise">Type de l\'expertise</string>
-    <string name="FeuReparation">Autoriserla réparation</string>
+    <string name="FeuReparation">Autoriser la réparation</string>
     <string name="Collision">Collision</string>
     <string name="Impact">Impact</string>
     <string name="Filtre">Filtre</string>
     <string name="Tri">Tri</string>
     <string name="Autre">Autre</string>
     <string name="Commencer">Commencer la visio expertise</string>
-    <string name="PlanifierSuivi">Planifier la visio suivi</string>
-    <string name="CommencerSuivi">Commencer la visio suivi</string>
+    <string name="Attente">En attente de la facture</string>
+    <string name="PlanifierSuivi">Planifier le visio suivi</string>
+    <string name="CommencerSuivi">Commencer le visio suivi</string>
     <string name="Lieu">Lieu de l\'accident</string>
-    <string name="Scan">Scan des documents</string>
+    <string name="Scan"> Constat et attestation d\’assurance</string>
     <string name="Facture">Facture</string>
     <string name="Video">Video de l\'expertise</string>
+    <string name="VideoDegat">Video de l\'accident</string>
+    <string name="Profil">Profil</string>
+    <string name="Valide">Valide</string>
+    <string name="Securite">Securite</string>
+    <string name="Informations">Informations personnelles</string>
+    <string name="Deconnection">Deconnection</string>
     <string name="Suivi">Video du suivi</string>
     <string name="Rapport">Rapport de l\'expertise</string>
     <string name="Nom">Nom et prénom</string>
@@ -77,15 +85,16 @@
     <string name="Circonstance">Circonstance</string>
     <string name="Photos">Veuillez choisir un rendez vous pour la visio expertise</string>
 
-    <string name="Degats">Images du dégat</string>
+    <string name="Degats">Photos du dégat</string>
     <string name="NbDossiers">Nombre de dossiers</string>
     <string name="Compagnie">Compagnie d\'assurance</string>
     <string name="Planifier">Planifier la vidéo expertise</string>
-    <string name="Faire">Faire la vidéo expertise</string>
-    <string name="VisioExpertise">Visio Expertise</string>
+    <string name="Faire">Commencer l\'expertise</string>
+    <string name="Poursuivre">Poursuivre l\'expertise</string>
+    <string name="VisioExpertise">Visio-Expertise</string>
     <string name="Oui">Oui</string>
     <string name="Non">Non</string>
-    <string name="VisioTerrain">Visio Terrain</string>
+    <string name="VisioTerrain">Expertise sur terrain</string>
     <string name="Cancel">Annuler</string>
     <string name="Suivant">Suivant</string>
     <string name="Formulaire">Formulaire Smart Claim</string>
@@ -97,6 +106,12 @@
     <string name="Minutes">Minutes</string>
     <string name="Secondes">Secondes</string>
     <string name="Dossiers">Dossiers</string>
+    <string name="Notification">Notification Push</string>
+    <string name="Dark">Dark Mode</string>
+    <string name="Langue">Langue</string>
+    <string name="FAQ">FAQ</string>
+    <string name="Parametres">Parametres</string>
+
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAPTNg63-NFTlo2x2oKJyky6o4_ZAacHYA</string>
     <string-array name="filtre_list">
         <item>En attente de confirmation</item>

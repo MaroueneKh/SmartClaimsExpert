@@ -34,7 +34,7 @@ class DetailsDossierViewModel @Inject constructor(
 
     var listHistorique: List<DossierModel> = emptyList()
 
-    var listSuivis: List<SuiviModel> = emptyList()
+    var listVisios: List<VisioModel> = emptyList()
 
 
     private val _dossier = MutableStateFlow(Resource.loading(
@@ -47,11 +47,11 @@ class DetailsDossierViewModel @Inject constructor(
 
 
     private val _suivi = MutableStateFlow(Resource.loading(
-        data = listSuivis,
+        data = listVisios,
     ))
 
     // public
-    val suivi: StateFlow<Resource<List<SuiviModel>>> = _suivi
+    val suivi: StateFlow<Resource<List<VisioModel>>> = _suivi
 
 
     private val _pressBtnPlanifierEvent = MutableLiveData<Event<Unit>>()
@@ -95,7 +95,7 @@ class DetailsDossierViewModel @Inject constructor(
         _pressBtnPlanifierEvent.value = Event(Unit)
 
     }
-    fun getSuivi(idDossier:Int)
+    fun getVisio(idDossier:Int)
     {
         if (networkHelper.isNetworkConnected()) {
             viewModelScope.launch {
@@ -104,7 +104,7 @@ class DetailsDossierViewModel @Inject constructor(
                     logger.log("try")
                     apprefs.token.collect { token ->
                         _suivi.value = Resource.success(
-                            data = dossierRepository.getSuivi(idDossier)
+                            data = dossierRepository.getVisio(idDossier)
                         )
                     }
 

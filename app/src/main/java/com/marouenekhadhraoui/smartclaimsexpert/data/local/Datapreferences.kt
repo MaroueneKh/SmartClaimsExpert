@@ -2,10 +2,7 @@ package com.marouenekhadhraoui.smartclaimsexpert.data.local
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
@@ -33,6 +30,7 @@ class Datapreferences @Inject constructor(@ApplicationContext context: Context) 
         val DEGATS2 = stringPreferencesKey("degats2")
         val DEGATS3 = stringPreferencesKey("degats3")
         val DEGATS4 = stringPreferencesKey("degats4")
+        val NOTIF = intPreferencesKey("notif")
 
     }
 
@@ -108,14 +106,26 @@ class Datapreferences @Inject constructor(@ApplicationContext context: Context) 
             settings[DEGATS4] ?: "false"
         }
 
+    val notif: Flow<Int> = context.dataStore.data
+        .map { settings ->
+            // No type safety.
+            settings[NOTIF] ?: 0
+        }
 
-    suspend fun setStatus(context: Context) {
+    suspend fun setMode(context: Context, value: Boolean) {
         context.dataStore.edit { settings ->
-            settings[CONNECTED] = true
+            settings[DARKENABLED] = value
         }
     }
 
-    suspend fun setToken(context: Context, token: String) {
+    suspend fun setStatus(context: Context, value: Boolean) {
+        context.dataStore.edit { settings ->
+            settings[CONNECTED] = value
+        }
+    }
+
+
+        suspend fun setToken(context: Context, token: String) {
         context.dataStore.edit { settings ->
             settings[TOKEN] = token
         }
@@ -184,6 +194,11 @@ class Datapreferences @Inject constructor(@ApplicationContext context: Context) 
     suspend fun setdegats4(context: Context, token: String) {
         context.dataStore.edit { settings ->
             settings[DEGATS4] = token
+        }
+    }
+    suspend fun setnotif(context: Context, token: Int) {
+        context.dataStore.edit { settings ->
+            settings[NOTIF] = token
         }
     }
 

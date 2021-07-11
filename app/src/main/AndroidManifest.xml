@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marouenekhadhraoui.smartclaimsexpert">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".SmartClaimsExpertApplication"
         android:allowBackup="true"
@@ -11,37 +17,39 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.SmartClaimsExpert">
+        android:theme="@style/Theme.SmartClaimsExpert"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.main.VisioActivity2"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".ui.signin.SignInActivity"
 
-            />
-        <activity android:name=".ui.splash.SecondSplashActivity"
-
-            />
+        <activity android:name=".ui.signin.SignInActivity" />
+        <activity android:name=".ui.splash.SecondSplashActivity" />
         <activity android:name=".ui.main.VisioActivity">
-
-        </activity>
-
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:label="@string/app_name"
-
-            android:theme="@style/Theme.SmartClaimsExpert.NoActionBar" />
-        <activity
-            android:name=".ui.splash.SplashActivity"
-
-            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.SmartClaimsExpert.NoActionBar" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/SplashTheme"></activity>
+
+        <service
+            android:name=".service.FcmMessageService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

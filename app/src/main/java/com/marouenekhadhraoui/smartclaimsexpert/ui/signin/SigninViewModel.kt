@@ -142,7 +142,7 @@ class SignInViewModel @Inject constructor(private val assureRepository: ExpertRe
     fun saveConnected(context: Context) {
         viewModelScope.launch {
             try {
-                apprefs.setStatus(context)
+                apprefs.setStatus(context,true)
             } catch (exception: Exception) {
                 logger.log("catch ")
                 logger.log(exception.message.toString())

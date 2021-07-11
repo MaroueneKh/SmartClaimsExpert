@@ -14,7 +14,9 @@ data class ExpertModel(
         @SerializedName("password")
         val password: String,
         @SerializedName("token")
-        val token: String
+        val token: String,
+        @SerializedName("agence")
+        val agence: String,
 
 
 )

@@ -19,6 +19,7 @@ import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
 import com.marouenekhadhraoui.smartclaimsexpert.databinding.VideoVisioRecordedFragmentBinding
 import com.marouenekhadhraoui.smartclaimsexpert.ui.main.VisioActivity
+import com.marouenekhadhraoui.smartclaimsexpert.ui.main.VisioViewModel
 import com.marouenekhadhraoui.smartclaimsexpert.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.video_visio_recorded_fragment.*
@@ -30,6 +31,8 @@ import javax.inject.Inject
 class VideoVisioFragment : Fragment() {
 
     private val viewModel: VideoVisioViewModel by viewModels()
+
+    private val visioviewModel: VisioViewModel by viewModels()
 
     private var _binding: VideoVisioRecordedFragmentBinding? = null
     private val binding get() = _binding
@@ -128,31 +131,16 @@ class VideoVisioFragment : Fragment() {
 
 
                             } else if (it.data[0].effectue == 1) {
-                                if (it.data[0].resultat.equals("Pret pour reparation"))
+                                if (it.data[0].resultat.equals("Facture ajouté"))
                                 {
-                                    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                                        viewModel.suivi.collect {
-                                            when (it.status) {
-                                                Status.SUCCESS -> {
-                                                    logger.log("success")
-                                                    if (it.data!!.isEmpty()) {
-                                                        logger.log("suivi non planifieé")
-                                                        btnValider.isEnabled = false
-                                                        btnValider.background =
-                                                            resources.getDrawable(R.drawable.button_se_connecter_disabled)
-                                                        btnValider.setTextColor(resources.getColor(R.color.whitedisabled))
-                                                        jz_video.visible()
-                                                        textVideo.invisible()
-                                                        btnVisio.text = getString(R.string.PlanifierSuivi)
-                                                        btnVisio.setOnClickListener(View.OnClickListener {
-                                                            val bundle = bundleOf("id" to arguments?.get("id").toString())
-                                                            setNavDirectionsToPlanifierSuivi(bundle)
-                                                            val navController = findNavController()
-                                                            navController.navigate(navDirections)
-                                                        })
-                                                    } else {
-                                                        if (it.data[0].effectue == 0)
-                                                        {
+                                    if (it.data[0].resultat.equals("Pret pour reparation"))
+                                    {
+                                        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                                            viewModel.suivi.collect {
+                                                when (it.status) {
+                                                    Status.SUCCESS -> {
+                                                        logger.log("success")
+                                                        if (it.data!!.isEmpty()) {
                                                             logger.log("suivi non planifieé")
                                                             btnValider.isEnabled = false
                                                             btnValider.background =
@@ -160,123 +148,161 @@ class VideoVisioFragment : Fragment() {
                                                             btnValider.setTextColor(resources.getColor(R.color.whitedisabled))
                                                             jz_video.visible()
                                                             textVideo.invisible()
-                                                            btnVisio.text = getString(R.string.CommencerSuivi)
-                                                            binding?.btnVisio?.setOnClickListener(View.OnClickListener {
-                                                                startActivityToVisio(VisioActivity(), requireView())
+                                                            visioviewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de facture")
+                                                            btnVisio.text = getString(R.string.PlanifierSuivi)
+                                                            btnVisio.setOnClickListener(View.OnClickListener {
+                                                                val bundle = bundleOf("id" to arguments?.get("id").toString())
+                                                                setNavDirectionsToPlanifierSuivi(bundle)
+                                                                val navController = findNavController()
+                                                                navController.navigate(navDirections)
                                                             })
-
-                                                        }
-                                                        if (it.data[0].effectue == 1)
-                                                        {
-
-                                                            if (it.data[0].resultat == "En attente de facture")
+                                                        } else {
+                                                            if (it.data[0].effectue == 0)
                                                             {
-                                                                btnVisio.isEnabled = false
-                                                                btnVisio.background =
-                                                                    resources.getDrawable(R.drawable.button_se_connecter_disabled)
-                                                                btnValider.isEnabled = true
-                                                                jz_video.visible()
-                                                                txt_videoSuivi.visible()
-                                                                jz_videoSuivi.visible()
-                                                                card.visible()
-                                                                textVideo.invisible()
-                                                                btnVisio.text = getString(R.string.CommencerSuivi)
-                                                                txt_facture.visible()
-                                                                img_facture.visible()
-                                                                textFactureSmart.visible()
-                                                                img_facture.setOnClickListener(View.OnClickListener {
-                                                                    val bundle = bundleOf("id" to arguments?.get("id").toString())
-                                                                    setNavDirectionsToFacture(bundle)
-                                                                    val navController = findNavController()
-                                                                    navController.navigate(navDirections)
-
-
-                                                                })
-                                                                binding?.btnValider?.setOnClickListener(View.OnClickListener {
-
-
-
-                                                                })
-
-                                                            }
-                                                            else if (it.data[0].resultat == "Facture ajouté")
-                                                            {
-                                                                btnVisio.isEnabled = false
-                                                                btnVisio.background =
-                                                                    resources.getDrawable(R.drawable.button_se_connecter_disabled)
+                                                                logger.log("suivi non planifieé")
                                                                 btnValider.isEnabled = false
-                                                                jz_video.visible()
-                                                                txt_videoSuivi.visible()
-                                                                jz_videoSuivi.visible()
-                                                                card.visible()
-                                                                textVideo.invisible()
-                                                                btnVisio.text = getString(R.string.CommencerSuivi)
-                                                                txt_facture.visible()
-                                                                img_facture.visible()
-                                                                textFactureSmart.visible()
-                                                                btnValider.invisible()
-
-
-                                                            }
-                                                            else{
-                                                                btnVisio.isEnabled = false
-                                                                btnVisio.background =
+                                                                btnValider.background =
                                                                     resources.getDrawable(R.drawable.button_se_connecter_disabled)
-                                                                btnValider.isEnabled = true
+                                                                btnValider.setTextColor(resources.getColor(R.color.whitedisabled))
                                                                 jz_video.visible()
-                                                                txt_videoSuivi.visible()
-                                                                jz_videoSuivi.visible()
                                                                 textVideo.invisible()
                                                                 btnVisio.text = getString(R.string.CommencerSuivi)
-                                                                binding?.btnValider?.setOnClickListener(View.OnClickListener {
-                                                                    //    startActivityToVisio(VisioActivity(), requireView())
-                                                                    val bundle = bundleOf("id" to arguments?.get("id").toString())
-                                                                    setNavDirectionsToAcquisition(bundle)
-                                                                    val navController = findNavController()
-                                                                    navController.navigate(navDirections)
+                                                                binding?.btnVisio?.setOnClickListener(View.OnClickListener {
+                                                                    startActivityToVisio(VisioActivity(), requireView())
                                                                 })
 
                                                             }
+                                                            if (it.data[0].effectue == 1)
+                                                            {
 
+                                                                if (it.data[0].resultat == "En attente de facture")
+                                                                {
+                                                                    btnVisio.isEnabled = false
+                                                                    btnVisio.background =
+                                                                        resources.getDrawable(R.drawable.button_se_connecter_disabled)
+                                                                    btnValider.isEnabled = true
+                                                                    jz_video.visible()
+                                                                    txt_videoSuivi.visible()
+                                                                    jz_videoSuivi.visible()
+                                                                    card.visible()
+                                                                    textVideo.invisible()
+                                                                    btnVisio.text = getString(R.string.CommencerSuivi)
+                                                                    txt_facture.visible()
+                                                                    img_facture.visible()
+                                                                    textFactureSmart.visible()
+                                                                    visioviewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de suivi")
+                                                                    img_facture.setOnClickListener(View.OnClickListener {
+                                                                        val bundle = bundleOf("id" to arguments?.get("id").toString())
+                                                                        setNavDirectionsToFacture(bundle)
+                                                                        val navController = findNavController()
+                                                                        navController.navigate(navDirections)
+
+
+                                                                    })
+                                                                    binding?.btnValider?.setOnClickListener(View.OnClickListener {
+
+
+
+                                                                    })
+
+                                                                }
+                                                                else if (it.data[0].resultat == "Facture ajouté")
+                                                                {
+                                                                    btnVisio.isEnabled = false
+                                                                    btnVisio.background =
+                                                                        resources.getDrawable(R.drawable.button_se_connecter_disabled)
+                                                                    btnValider.isEnabled = false
+                                                                    jz_video.visible()
+                                                                    txt_videoSuivi.visible()
+                                                                    jz_videoSuivi.visible()
+                                                                    card.visible()
+                                                                    textVideo.invisible()
+                                                                    btnVisio.text = getString(R.string.CommencerSuivi)
+                                                                    txt_facture.invisible()
+                                                                    img_facture.invisible()
+                                                                    textFactureSmart.invisible()
+                                                                    btnValider.invisible()
+
+                                                                }
+                                                                else{
+                                                                    btnVisio.isEnabled = false
+                                                                    btnVisio.background =
+                                                                        resources.getDrawable(R.drawable.button_se_connecter_disabled)
+                                                                    btnValider.isEnabled = true
+                                                                    jz_video.visible()
+                                                                    txt_videoSuivi.visible()
+                                                                    jz_videoSuivi.visible()
+                                                                    textVideo.invisible()
+                                                                    btnVisio.text = getString(R.string.CommencerSuivi)
+                                                                    binding?.btnValider?.setOnClickListener(View.OnClickListener {
+                                                                        //    startActivityToVisio(VisioActivity(), requireView())
+                                                                        val bundle = bundleOf("id" to arguments?.get("id").toString())
+                                                                        setNavDirectionsToAcquisition(bundle)
+                                                                        val navController = findNavController()
+                                                                        navController.navigate(navDirections)
+                                                                    })
+
+                                                                }
+
+                                                            }
+
+                                                            //planifier la visio suivi
                                                         }
 
-                                                        //planifier la visio suivi
                                                     }
-
-                                                }
-                                                Status.LOADING -> {
-                                                    logger.log("loading")
+                                                    Status.LOADING -> {
+                                                        logger.log("loading")
 
 
-                                                }
-                                                Status.ERROR -> {
-                                                    logger.log("error")
-                                                    if (it.message.equals(internetErr)) {
-                                                        logger.log("internet error")
-                                                        //  Snackbar.make(findViewById(R.id.constraint), "Verifier votre connexion", Snackbar.LENGTH_LONG).show()
                                                     }
+                                                    Status.ERROR -> {
+                                                        logger.log("error")
+                                                        if (it.message.equals(internetErr)) {
+                                                            logger.log("internet error")
+                                                            //  Snackbar.make(findViewById(R.id.constraint), "Verifier votre connexion", Snackbar.LENGTH_LONG).show()
+                                                        }
 
+                                                    }
                                                 }
                                             }
                                         }
                                     }
+                                    else{
+                                        logger.log("suivi planifié")
+                                        btnVisio.isEnabled = false
+                                        btnVisio.background =
+                                            resources.getDrawable(R.drawable.button_se_connecter_disabled)
+                                        btnVisio.text = getString(R.string.Commencer)
+                                        jz_video.visible()
+                                        textVideo.invisible()
+
+                                        btnValider.isEnabled = true
+                                        btnValider.background =
+                                            resources.getDrawable(R.drawable.button_se_connecter)
+                                        btnValider.setTextColor(resources.getColor(R.color.white))
+                                        setButtonValider()
+
+                                    }
+
                                 }
                                 else{
-                                    logger.log("suivi planifié")
+
                                     btnVisio.isEnabled = false
                                     btnVisio.background =
                                         resources.getDrawable(R.drawable.button_se_connecter_disabled)
-                                    btnVisio.text = getString(R.string.Commencer)
+                                    btnVisio.text = getString(R.string.Attente)
                                     jz_video.visible()
                                     textVideo.invisible()
 
-                                    btnValider.isEnabled = true
+                                    btnValider.isEnabled = false
                                     btnValider.background =
-                                        resources.getDrawable(R.drawable.button_se_connecter)
-                                    btnValider.setTextColor(resources.getColor(R.color.white))
-                                    setButtonValider()
+                                        resources.getDrawable(R.drawable.button_se_connecter_disabled)
+
+                               //     setButtonValider()
+
 
                                 }
+
 
 
                             }

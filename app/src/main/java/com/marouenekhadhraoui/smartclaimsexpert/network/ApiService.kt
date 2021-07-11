@@ -65,6 +65,8 @@ interface ApiService {
     @POST("api/callAssure")
     suspend fun callAssure(
         @Query(value = "idAssure") idDossier: Int,
+        @Query(value = "call") call: String,
+
     ): List<SuiviModel>
     @POST("api/ajouterRapport")
     suspend fun AjouterRapport(
@@ -76,7 +78,12 @@ interface ApiService {
         @Query(value = "idAssure") idAssure: Int,
     ): List<VisioModel>
     @POST("api/modifierDossier")
-    suspend fun modifierDossier(@Query(value = "idDossier") idDossier: Int,@Query(value = "etat") etat:String): List<DossierModel>
+    suspend fun modifierDossier(@Query(value = "id") idDossier: Int,@Query(value = "etat") etat:String): List<DossierModel>
+
+    @POST("api/getProfilExpert")
+    suspend fun getProfil(
+        @Query(value = "token") token: String,
+    ): List<ExpertModel>
 
 
 

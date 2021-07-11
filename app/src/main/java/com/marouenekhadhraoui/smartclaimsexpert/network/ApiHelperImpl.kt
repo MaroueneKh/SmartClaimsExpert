@@ -21,10 +21,13 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : Ap
     override suspend fun ajouterSuivi(idDossier:Int,idAssure: Int, idExpert: Int, date: String, time: String,effectue:Int): List<SuiviModel> = apiService.ajouterSuivi(idDossier,idAssure,idExpert,date,time,0)
     override suspend fun getSuivi(idDossier: Int): List<SuiviModel> = apiService.getSuivi(idDossier)
     override suspend fun modifierSuivi(idDossier: Int, effectue: Int,resultat:String):List<SuiviModel> = apiService.modifierSuivi(idDossier,effectue,resultat)
-   override suspend fun callAssure(idAssure:Int) : List<SuiviModel> = apiService.callAssure(idAssure)
+   override suspend fun callAssure(idAssure:Int,call:String) : List<SuiviModel> = apiService.callAssure(idAssure,call)
     override suspend fun ajouterRapport(idAssure: Int, rapportModel: RapportModel): List<RapportModel>  = apiService.AjouterRapport(idAssure,rapportModel)
     override suspend fun getCountDown(idAssure: Int): List<VisioModel>  = apiService.getCountDown(idAssure)
    override suspend fun modifierDossier(idDossier: Int,etat:String): List<DossierModel> = apiService.modifierDossier(idDossier,etat)
+    override suspend fun getProfil(token: String): List<ExpertModel> =
+        apiService.getProfil(token)
+
 }
 
 

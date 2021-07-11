@@ -159,7 +159,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="32dp"
-                            android:src="@drawable/ic_icon_material_videocam"
+                            android:src="@drawable/ic_icon_awesome_file_import"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

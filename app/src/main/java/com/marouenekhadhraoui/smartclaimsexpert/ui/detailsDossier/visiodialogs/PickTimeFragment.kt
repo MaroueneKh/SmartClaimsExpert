@@ -39,7 +39,14 @@ class PickTimeFragment  : Fragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         timePicker1.setOnTimeChangedListener { _, hour, minute -> var hour = hour
+
+            if (hour<8)
+                hour=8
+            if (hour>18)
+                hour=18
             viewModel.time.postValue("$hour:$minute")
         }
 

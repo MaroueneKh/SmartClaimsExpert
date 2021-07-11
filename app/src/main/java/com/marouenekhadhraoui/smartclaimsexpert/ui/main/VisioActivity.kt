@@ -94,17 +94,14 @@ class VisioActivity : AppCompatActivity()  {
 
 
         rtcClient.startLocalVideoCapture(local_view)
-        signallingClient =
-            SignallingClient(
-                createSignallingClientListener()
-            )
-        call_button.setOnClickListener {
-            rtcClient.call(sdpObserver)
-            viewModel.callAssure(1)
-        }
+        viewModel.callAssure(1,"on")
+
+
         cancel_button.setOnClickListener {
             //
+
             rtcClient.endCall(sdpObserver)
+            viewModel.callAssure(1,"off")
 
 
 
@@ -118,13 +115,13 @@ class VisioActivity : AppCompatActivity()  {
                         Status.SUCCESS -> {
                             if (it.data!!.isEmpty()) {
                                 logger.log("here")
-                                viewModel.modifierVisio(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
+                             //   viewModel.modifierVisio(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
                                 finish()
 
                             }
                             else{
                                 logger.log("not here")
-                                viewModel.modifierSuivi(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
+                               // viewModel.modifierSuivi(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
                                 finish()
                             }
 
@@ -219,6 +216,7 @@ class VisioActivity : AppCompatActivity()  {
 
     override fun onDestroy() {
         signallingClient.destroy()
+        rtcClient.endCall(sdpObserver)
         super.onDestroy()
     }
 

@@ -158,13 +158,14 @@ class VisioViewModel @Inject constructor(
 
 
 
-    fun callAssure(idAssure:Int)
+    fun callAssure(idAssure:Int,call:String)
     {
+        logger.log("calling assuré")
         if (networkHelper.isNetworkConnected()) {
             viewModelScope.launch {
                 try {
                     _suivi.value = Resource.success(
-                        data = visioRepository.callAssure(idAssure)
+                        data = visioRepository.callAssure(idAssure,"on")
                     )
 
                 } catch (exception: Exception) {

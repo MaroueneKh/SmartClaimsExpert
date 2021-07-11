@@ -38,7 +38,7 @@ class DemandeAcquisitionDialog : DialogFragment() {
         val myview: View = inflater.inflate(R.layout.demande_acquisition_dialog, container, false)
 
         myview.btnSubmit.setOnClickListener(View.OnClickListener {
-            viewModel.modifierSuivi(arguments?.get("id").toString().toInt(),1,"En attente de facture")
+          viewModel.modifierSuivi(arguments?.get("id").toString().toInt(),1,"En attente de facture")
             viewModel.modifierDossier(arguments?.get("id").toString().toInt(),"En attente de facture")
 
 
