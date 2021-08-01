@@ -42,6 +42,8 @@ class VisioActivity : AppCompatActivity()  {
     lateinit var logger: Logger
 
 
+  private var fois:Int = 0
+
 
     private val viewModel: VisioViewModel by viewModels()
 
@@ -57,7 +59,7 @@ class VisioActivity : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visio)
-
+logger.log("fi visio activity")
 
 
         checkCameraPermission()
@@ -89,18 +91,30 @@ class VisioActivity : AppCompatActivity()  {
                 }
             }
         )
+
+        fois++
         rtcClient.initSurfaceView(remote_view)
         rtcClient.initSurfaceView(local_view)
 
 
         rtcClient.startLocalVideoCapture(local_view)
-        viewModel.callAssure(1,"on")
+
+
+        if (fois == 1)
+      {
+       logger.log("djdjjdjdjd")
+       viewModel.callAssure(1,"on")
+          rtcClient.endCall(sdpObserver)
+       }
+
+
 
 
         cancel_button.setOnClickListener {
             //
 
             rtcClient.endCall(sdpObserver)
+
             viewModel.callAssure(1,"off")
 
 
@@ -215,8 +229,8 @@ class VisioActivity : AppCompatActivity()  {
 
 
     override fun onDestroy() {
-        signallingClient.destroy()
-        rtcClient.endCall(sdpObserver)
+//       signallingClient.destroy()
+
         super.onDestroy()
     }
 

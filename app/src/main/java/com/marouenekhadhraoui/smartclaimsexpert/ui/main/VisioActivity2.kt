@@ -1,6 +1,7 @@
 package com.marouenekhadhraoui.smartclaimsexpert.ui.main
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -16,10 +17,15 @@ import androidx.core.view.isGone
 import androidx.lifecycle.lifecycleScope
 import com.marouenekhadhraoui.smartclaimsexpert.Logger
 import com.marouenekhadhraoui.smartclaimsexpert.R
+import com.marouenekhadhraoui.smartclaimsexpert.data.local.Datapreferences
 import com.marouenekhadhraoui.smartclaimsexpert.utils.Status
+import com.marouenekhadhraoui.smartclaimsexpert.utils.TO_SIGNIN_OR_SIGNUP
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_visio2.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.webrtc.IceCandidate
 import org.webrtc.MediaStream
 import org.webrtc.SessionDescription
@@ -37,9 +43,13 @@ class VisioActivity2 : AppCompatActivity()  {
     @Inject
     lateinit var logger: Logger
 
-
+    @Inject
+    lateinit var dataPref: Datapreferences
 
     private val viewModel: VisioViewModel by viewModels()
+
+
+     var id:Int = 0
 
 
     private val sdpObserver = object : AppSdpObserver() {
@@ -117,33 +127,52 @@ class VisioActivity2 : AppCompatActivity()  {
             val bundle = intent.extras
             logger.log("idDossier")
             logger.log(bundle?.get("id").toString())
-            viewModel.getSuivi(bundle?.get("id").toString().toInt())
-            lifecycleScope.launchWhenStarted {
-                viewModel.suivi.collect {
-                    when (it.status) {
-                        Status.SUCCESS -> {
-                            if (it.data!!.isEmpty()) {
-                                logger.log("here")
-                                viewModel.modifierVisio(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
-                                finish()
 
+            CoroutineScope(IO).launch {
+                dataPref.id.collect {
+                    id=it.toInt()
+                    viewModel.getSuivi(id)
+                    lifecycleScope.launchWhenStarted {
+                        viewModel.suivi.collect {
+                            when (it.status) {
+                                Status.SUCCESS -> {
+                                    if (it.data!!.isEmpty()) {
+                                        logger.log("here")
+
+                                        viewModel.modifierVisio(id,1,"en attente d'avis")
+                                        viewModel.modifierDossier(id,"En attente de facture")
+
+                                        val intent = Intent(applicationContext, MainActivity::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        intent.action = TO_SIGNIN_OR_SIGNUP
+                                        startActivity(intent)
+
+                                    }
+                                    else{
+                                        logger.log("not here")
+                                        viewModel.modifierSuivi(id,1,"en attente d'avis")
+
+                                        val intent = Intent(applicationContext, MainActivity::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                                        intent.action = TO_SIGNIN_OR_SIGNUP
+                                        startActivity(intent)
+                                    }
+
+                                }
+                                Status.LOADING -> {
+
+                                }
+                                Status.ERROR -> {
+
+                                }
                             }
-                            else{
-                                logger.log("not here")
-                                viewModel.modifierSuivi(bundle?.get("id").toString().toInt(),1,"en attente d'avis")
-                                finish()
-                            }
-
-                        }
-                        Status.LOADING -> {
-
-                        }
-                        Status.ERROR -> {
-
                         }
                     }
+
                 }
+                // Your Stuff here
             }
+
 
 
 

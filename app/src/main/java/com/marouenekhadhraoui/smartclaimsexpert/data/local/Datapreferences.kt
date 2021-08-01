@@ -31,6 +31,7 @@ class Datapreferences @Inject constructor(@ApplicationContext context: Context) 
         val DEGATS3 = stringPreferencesKey("degats3")
         val DEGATS4 = stringPreferencesKey("degats4")
         val NOTIF = intPreferencesKey("notif")
+        val ID = stringPreferencesKey("idDossier")
 
     }
 
@@ -110,6 +111,11 @@ class Datapreferences @Inject constructor(@ApplicationContext context: Context) 
         .map { settings ->
             // No type safety.
             settings[NOTIF] ?: 0
+        }
+    val id: Flow<String> = context.dataStore.data
+        .map { settings ->
+            // No type safety.
+            settings[ID] ?: "59"
         }
 
     suspend fun setMode(context: Context, value: Boolean) {
@@ -199,6 +205,11 @@ class Datapreferences @Inject constructor(@ApplicationContext context: Context) 
     suspend fun setnotif(context: Context, token: Int) {
         context.dataStore.edit { settings ->
             settings[NOTIF] = token
+        }
+    }
+    suspend fun setid(context: Context, id: String) {
+        context.dataStore.edit { settings ->
+            settings[ID] = id
         }
     }
 

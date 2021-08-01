@@ -30,7 +30,7 @@ class SignallingClient(
 ) : CoroutineScope {
 
     companion object {
-        private const val HOST_ADDRESS = "847f68945759.ngrok.io"
+        private const val HOST_ADDRESS = "ktor.dev.addinn.com"
     }
 
     private val job = Job()

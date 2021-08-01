@@ -165,7 +165,7 @@ class VisioViewModel @Inject constructor(
             viewModelScope.launch {
                 try {
                     _suivi.value = Resource.success(
-                        data = visioRepository.callAssure(idAssure,"on")
+                        data = visioRepository.callAssure(idAssure,"off")
                     )
 
                 } catch (exception: Exception) {

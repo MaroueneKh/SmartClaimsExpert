@@ -56,8 +56,9 @@ class FcmMessageService : FirebaseMessagingService() {
             logger.log("notif")
             logger.log(remoteMessage.data.get("notif").toString())
             if (remoteMessage.data["notif"].equals("Facture ajouté")) {
-                sendNotification2("Une facture a été ajouté .", remoteMessage.data["id"]!!.toInt())
+                sendNotification2("Une facture a été ajouté .", 24)
             } else if (remoteMessage.data["notif"].equals("on")) {
+
                 val intent = Intent(this, VisioActivity2::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 intent.action = TO_SIGNIN_OR_SIGNUP

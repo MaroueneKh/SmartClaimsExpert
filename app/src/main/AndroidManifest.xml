@@ -28,11 +28,7 @@
         <activity android:name=".ui.signin.SignInActivity" />
         <activity android:name=".ui.splash.SecondSplashActivity" />
         <activity android:name=".ui.main.VisioActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
@@ -40,7 +36,14 @@
             android:theme="@style/Theme.SmartClaimsExpert.NoActionBar" />
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <service
             android:name=".service.FcmMessageService"
